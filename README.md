@@ -1,0 +1,2 @@
+# iNewsX
+iNewsX from rss
