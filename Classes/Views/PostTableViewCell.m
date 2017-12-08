@@ -26,8 +26,12 @@
 #import "User.h"
 
 #import "UIImageView+AFNetworking.h"
+#import "UIView+Extension.h"
 
 #import "AppDelegate.h"
+
+#define DT_SIZE 15.f
+#define TT_SIZE 12.f
 
 @implementation PostTableViewCell
 
@@ -41,7 +45,7 @@
     
     self.textLabel.adjustsFontSizeToFitWidth = YES;
     self.textLabel.textColor = [UIColor darkGrayColor];
-    self.detailTextLabel.font = [UIFont systemFontOfSize:12.0f];
+    self.detailTextLabel.font = [UIFont systemFontOfSize:DT_SIZE];
     self.detailTextLabel.numberOfLines = 0;
     self.selectionStyle = UITableViewCellSelectionStyleGray;
     
@@ -54,6 +58,9 @@
     self.textLabel.text = _post.title;
     self.detailTextLabel.text = _post.digest;
     [self.imageView setImageWithURL:[NSURL URLWithString:_post.imgsrc] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"] isNeed:((AppDelegate*)[UIApplication sharedApplication].delegate).isNeedImage];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.layer.borderWidth = 1.f;
+    self.imageView.layer.borderColor = [UIColor grayColor].CGColor;
     
     [self setNeedsLayout];
 }
@@ -63,7 +70,7 @@
 }
 
 + (CGFloat)detailTextHeight:(NSString *)text {
-    CGRect rectToFit = [text boundingRectWithSize:CGSizeMake(([UIScreen mainScreen].bounds.size.width-80), CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12.0f]} context:nil];
+    CGRect rectToFit = [text boundingRectWithSize:CGSizeMake(([UIScreen mainScreen].bounds.size.width-80), CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:DT_SIZE]} context:nil];
     return rectToFit.size.height;
 }
 
@@ -72,8 +79,12 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    //float centerY =
     
-    self.imageView.frame = CGRectMake(10.0f, 10.0f, 50.0f, 50.0f);
+    CGFloat height = [PostTableViewCell heightForCellWithPost:self.post];
+    
+    self.imageView.frame = CGRectMake(5.0f, 5.0f, 60.0f, 70.0f);
+    self.imageView.centerY = height/2.0f;
     self.textLabel.frame = CGRectMake(70.0f, 6.0f, ([UIScreen mainScreen].bounds.size.width-80), 20.0f);
     
     CGRect detailTextLabelFrame = CGRectOffset(self.textLabel.frame, 0.0f, 25.0f);

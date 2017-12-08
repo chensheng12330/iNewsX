@@ -14,6 +14,7 @@
 		58A1226A1B31BCB2003C9807 /* DetailItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A122691B31BCB2003C9807 /* DetailItemTableViewController.m */; };
 		58A1227D1B31CFF2003C9807 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1227C1B31CFF2003C9807 /* WebViewController.m */; };
 		58C03D8E1B306BF200390F8D /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C03D8D1B306BF200390F8D /* NewsViewController.m */; };
+		D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */; };
 		D47A6B4D1F17614000A23F14 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A6B291F17614000A23F14 /* AFHTTPRequestOperation.m */; };
 		D47A6B4E1F17614000A23F14 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A6B2B1F17614000A23F14 /* AFHTTPRequestOperationManager.m */; };
 		D47A6B4F1F17614000A23F14 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A6B2D1F17614000A23F14 /* AFHTTPSessionManager.m */; };
@@ -70,6 +71,8 @@
 		58A1227C1B31CFF2003C9807 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		58C03D8C1B306BF200390F8D /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		58C03D8D1B306BF200390F8D /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		D411DD271FDA8BEE00B0E0D9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		D47A6B281F17614000A23F14 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		D47A6B291F17614000A23F14 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		D47A6B2A1F17614000A23F14 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -164,9 +167,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D411DD261FDA8BEE00B0E0D9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D411DD271FDA8BEE00B0E0D9 /* UIView+Extension.h */,
+				D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		D47A6B261F17614000A23F14 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				D411DD261FDA8BEE00B0E0D9 /* Category */,
 				D47A6B5E1F17622300A23F14 /* JSONKit */,
 				D47A6B611F17622300A23F14 /* MJRefresh */,
 				D47A6B271F17614000A23F14 /* AFNetworking */,
@@ -407,7 +420,7 @@
 				TargetAttributes = {
 					F8E4695F1395739C00DB05C8 = {
 						DevelopmentTeam = XUNW2N8DNY;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -478,6 +491,7 @@
 				D47A6B6E1F17622300A23F14 /* MJRefreshBaseView.m in Sources */,
 				D47A6B6F1F17622300A23F14 /* MJRefreshConst.m in Sources */,
 				D47A6B591F17614000A23F14 /* UIButton+AFNetworking.m in Sources */,
+				D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */,
 				D47A6B571F17614000A23F14 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				D47A6B4E1F17614000A23F14 /* AFHTTPRequestOperationManager.m in Sources */,
 				D47A6B711F17622300A23F14 /* MJRefreshHeaderView.m in Sources */,
@@ -551,8 +565,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = XUNW2N8DNY;
+				DEVELOPMENT_TEAM = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -581,8 +596,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "714e99fd-8b3a-4389-98b4-a3c9c5f21ad0";
-				PROVISIONING_PROFILE_SPECIFIER = it_dev_all_app;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = "-Wunreachable-code";
 				WRAPPER_EXTENSION = app;
 			};
@@ -613,6 +628,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
