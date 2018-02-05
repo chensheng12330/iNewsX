@@ -50,16 +50,20 @@
     });
     
     
-    self.isNeedImage = NO;
-   ((AppDelegate*)[UIApplication sharedApplication].delegate).isNeedImage = self.isNeedImage;
+    self.isNeedImage =  ((AppDelegate*)[UIApplication sharedApplication].delegate).isNeedImage;
     
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setFrame:CGRectMake(0, 0, 80, 40)];
-    [btn setBackgroundColor:[UIColor darkGrayColor]];
+    [btn setFrame:CGRectMake(0, 0, 80, 35)];
+    //[btn setBackgroundColor:[UIColor darkGrayColor]];
+    [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+    btn.layer.borderColor = [UIColor grayColor].CGColor;
+    btn.layer.borderWidth = 1.0f;
+    btn.layer.cornerRadius= 4.0f;
     [btn setTitle:@"文字模式" forState:UIControlStateNormal ];
     [btn addTarget:self action:@selector(needImage:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-
+    [self changeNeedImage:btn];
     return;
 }
 
@@ -68,12 +72,18 @@
     self.isNeedImage = !self.isNeedImage;
     ((AppDelegate*)[UIApplication sharedApplication].delegate).isNeedImage = self.isNeedImage;
     
+    [self changeNeedImage:sender];
+}
+
+-(void) changeNeedImage:(UIButton *)sender {
     if(!self.isNeedImage)
     {
         [sender setTitle:@"文字模式" forState:UIControlStateNormal ];
+        [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     }
     else{
         [sender setTitle:@"图片模式" forState:UIControlStateNormal ];
+        [sender setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     }
 }
 

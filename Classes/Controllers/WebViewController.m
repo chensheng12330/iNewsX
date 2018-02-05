@@ -34,6 +34,7 @@
     
     
     NSURLRequest *requst = [NSURLRequest requestWithURL:[NSURL URLWithString:self.addressURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
+    
     //异步链接(形式1,较少用)
     [NSURLConnection sendAsynchronousRequest:requst queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
        
@@ -62,7 +63,10 @@
             //image replace
             ///< src="/i/eg_tulip.jpg">
             
-            [self.webView loadHTMLString:body baseURL:[NSURL URLWithString:self.addressURL]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.webView loadHTMLString:body baseURL:[NSURL URLWithString:self.addressURL]];
+            });
+            
         }
        
     }];
