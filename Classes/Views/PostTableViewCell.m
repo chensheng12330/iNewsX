@@ -33,6 +33,10 @@
 #define DT_SIZE 15.f
 #define TT_SIZE 12.f
 
+@interface PostTableViewCell ()
+@property (nonatomic,strong) UILabel *lbDate; //日期
+@end
+
 @implementation PostTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style
@@ -49,6 +53,13 @@
     self.detailTextLabel.numberOfLines = 0;
     self.selectionStyle = UITableViewCellSelectionStyleGray;
     
+    self.lbDate = [[UILabel alloc] init];
+    [_lbDate setFont:[UIFont systemFontOfSize:9.0f]];
+    _lbDate.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.3f];
+    [_lbDate setTextColor:[UIColor whiteColor]];
+    [_lbDate setTextAlignment:NSTextAlignmentCenter];
+    //_lbDate.alpha = 0.8f;
+    [self addSubview:_lbDate];
     return self;
 }
 
@@ -61,6 +72,9 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView.layer.borderWidth = 1.f;
     self.imageView.layer.borderColor = [UIColor grayColor].CGColor;
+    
+    
+    _lbDate.text = [_post.ptime componentsSeparatedByString:@" "].firstObject;
     
     [self setNeedsLayout];
 }
@@ -91,6 +105,11 @@
     CGFloat calculatedHeight = [[self class] detailTextHeight:self.post.digest];
     detailTextLabelFrame.size.height = calculatedHeight;
     self.detailTextLabel.frame = detailTextLabelFrame;
+    
+    
+    ///
+    CGRect lbRect = CGRectMake(self.imageView.left, self.imageView.bottom-18.f, self.imageView.width, 18.f);
+    [_lbDate setFrame:lbRect];
 }
 
 @end

@@ -39,6 +39,7 @@
     self.imgsrc = attributes[@"imgsrc"];
     self.docid = attributes[@"docid"];
     self.url_3w = attributes[@"url_3w"];
+    self.ptime  = attributes[@"ptime"];
     //self.user = [[User alloc] initWithAttributes:[attributes valueForKeyPath:@"user"]];
     
     return self;

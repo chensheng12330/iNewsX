@@ -1,37 +1,67 @@
 //
-//  UIView+Extension.m
-//  Wallet
+//  UIView+Frame.m
+//  iOS-Categories (https://github.com/shaojiankui/iOS-Categories)
 //
-//  Created by Sherwin.Chen on 16/8/2.
-//  Copyright © 2017年 maimaiti. All rights reserved.
+//  Created by Jakey on 14/12/15.
+//  Copyright (c) 2014年 www.skyfox.org. All rights reserved.
 //
 
 #import "UIView+Extension.h"
 
-@implementation UIView (Extension)
+@implementation UIView (Frame)
+#pragma mark - Shortcuts for the coords
 
-- (void)setX:(CGFloat)x
+- (CGFloat)top
 {
-    CGRect frame = self.frame;
-    frame.origin.x = x;
-    self.frame = frame;
+    return self.frame.origin.y;
 }
 
-- (CGFloat)x
-{
-    return self.frame.origin.x;
-}
-
-- (void)setY:(CGFloat)y
+- (void)setTop:(CGFloat)y
 {
     CGRect frame = self.frame;
     frame.origin.y = y;
     self.frame = frame;
 }
 
-- (CGFloat)y
+- (CGFloat)right
 {
-    return self.frame.origin.y;
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setRight:(CGFloat)right
+{
+    CGRect frame = self.frame;
+    frame.origin.x = right - self.frame.size.width;
+    self.frame = frame;
+}
+
+- (CGFloat)bottom
+{
+    return self.frame.origin.y + self.frame.size.height;
+}
+
+- (void)setBottom:(CGFloat)bottom
+{
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - self.frame.size.height;
+    self.frame = frame;
+}
+
+- (CGFloat)left
+{
+    return self.frame.origin.x;
+}
+
+- (void)setLeft:(CGFloat)x
+{
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+
+- (CGFloat)width
+{
+    return self.frame.size.width;
 }
 
 - (void)setWidth:(CGFloat)width
@@ -41,9 +71,9 @@
     self.frame = frame;
 }
 
-- (CGFloat)width
+- (CGFloat)height
 {
-    return self.frame.size.width;
+    return self.frame.size.height;
 }
 
 - (void)setHeight:(CGFloat)height
@@ -53,46 +83,44 @@
     self.frame = frame;
 }
 
-- (void)setCenterX:(CGFloat)centerX
-{
-    CGPoint center = self.center;
-    center.x = centerX;
-    self.center = center;
+#pragma mark - Shortcuts for frame properties
+
+- (CGPoint)origin {
+    return self.frame.origin;
 }
 
-- (CGFloat)centerX
-{
-    return self.center.x;
-}
-- (void)setCenterY:(CGFloat)centerY
-{
-    CGPoint center = self.center;
-    center.y = centerY;
-    self.center = center;
+- (void)setOrigin:(CGPoint)origin {
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
 }
 
-- (CGFloat)centerY
-{
-    return self.center.y;
+- (CGSize)size {
+    return self.frame.size;
 }
 
-- (CGFloat)height
-{
-    return self.frame.size.height;
-}
-
-- (void)setSize:(CGSize)size
-{
-    //    self.width = size.width;
-    //    self.height = size.height;
+- (void)setSize:(CGSize)size {
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
 }
+#pragma mark - Shortcuts for positions
 
-- (CGSize)size
-{
-    return self.frame.size;
+- (CGFloat)centerX {
+    return self.center.x;
+}
+
+- (void)setCenterX:(CGFloat)centerX {
+    self.center = CGPointMake(centerX, self.center.y);
+}
+
+- (CGFloat)centerY {
+    return self.center.y;
+}
+
+- (void)setCenterY:(CGFloat)centerY {
+    self.center = CGPointMake(self.center.x, centerY);
 }
 
 @end
+

@@ -20,8 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    self.webView.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.webView];
     
@@ -63,8 +65,19 @@
             //image replace
             ///< src="/i/eg_tulip.jpg">
             
+            NSString *htmlCode = [NSString stringWithFormat:@"\
+             <html>\
+             <head>\
+             <meta charset=\"utf-8\"> \
+             <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\
+             </head>\
+             <body> \
+             %@ \
+             </body> \
+             </html>",body];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.webView loadHTMLString:body baseURL:[NSURL URLWithString:self.addressURL]];
+                [self.webView loadHTMLString:htmlCode baseURL:[NSURL URLWithString:self.addressURL]];
             });
             
         }
