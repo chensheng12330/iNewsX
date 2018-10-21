@@ -7,10 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SHLoveHelper.h"
+
+#define COM [SHCommon sharedInstance]
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+
 @interface SHCommon : NSObject
+
+@property(nonatomic, strong) SHLoveHelper *mLoveHelper;
+
+
++ (instancetype)sharedInstance;
+
+-(UIColor*) randColor;
 
 @end
 

@@ -9,6 +9,8 @@
 #import "AllListTableViewController.h"
 #import "DetailItemTableViewController.h"
 #import "AppDelegate.h"
+#import "SHLoveHelper.h"
+
 @interface AllListTableViewController ()
 @property (readwrite, nonatomic, strong) NSArray *allList;
 
@@ -108,15 +110,25 @@
     NSDictionary *info = self.allList[(NSUInteger)indexPath.row];
     
     [cell.textLabel setText:info[@"cName"]];
-    
-    NSString *infoStr = [NSString stringWithFormat:@"%@ - [%lu]",info[@"cid"],(unsigned long)((NSArray*)info[@"tList"]).count];
+
+    NSUInteger count ;
+    if([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]) {
+        count = COM.mLoveHelper.arLoverList.count;
+    }
+    else {
+        count = ((NSArray*)info[@"tList"]).count;
+    }
+    NSString *infoStr = [NSString stringWithFormat:@"%@ - [%lu]",info[@"cid"],count];
+
+
     [cell.detailTextLabel setText:infoStr];
     
     cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
+    cell.backgroundColor = [COM randColor];
     return cell;
 }
-
 
 #pragma mark - UITableViewDelegate
 
@@ -128,13 +140,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     DetailItemTableViewController *detailItemVC  = [[DetailItemTableViewController alloc] init];
     
     NSDictionary *info = self.allList[(NSUInteger)indexPath.row];
-    
-    NSArray *newsList = info[@"tList"];
-    
-    detailItemVC.allList   = newsList;
+
+    if ([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]) {
+        detailItemVC.allList   = COM.mLoveHelper.arLoverList;
+    }
+    else {
+        NSArray *newsList = info[@"tList"];
+        detailItemVC.allList   = newsList;
+    }
+
     detailItemVC.titleName = info[@"cName"];
     detailItemVC.isNeedImage = self.isNeedImage;
     
     [self.navigationController pushViewController:detailItemVC animated:YES];
 }
+
 @end

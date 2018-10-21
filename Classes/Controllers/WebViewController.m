@@ -71,6 +71,7 @@
              <meta charset=\"utf-8\"> \
              <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\
              </head>\
+                                  <style type=\"text/css\">body{background: rgba(0,255,0,0.03);} </style> \
              <body> \
              %@ \
              </body> \
@@ -86,4 +87,5 @@
     
 }
 
+//bgcolor=\"rgba(0,255,0,0.1)\" opacity=\"0.5\"
 @end

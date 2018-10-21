@@ -31,6 +31,13 @@
 #import "AFHTTPSessionManager.h"
 #import "JSONKit.h"
 
+/*
+数据源：用户添加数据、本地数据
+
+ uid为：1024，数据为自定义，顶前排.
+
+ */
+
 @interface NewsViewController ()
 @property (readwrite, nonatomic, strong) NSArray *allList;
 

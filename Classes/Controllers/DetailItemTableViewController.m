@@ -22,7 +22,8 @@
     [super viewDidLoad];
     
     self.title = self.titleName;
-    
+
+    /*
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btnSel = btn;
     
@@ -31,6 +32,8 @@
     [btn setTitle:@"选择(0)" forState:UIControlStateNormal ];
     [btn addTarget:self action:@selector(OutJosn:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    */
+
     
     self.addArray = [NSMutableArray new];
     
@@ -46,10 +49,26 @@
 
 -(void) addNewsItemForButton:(UIButton*) sender
 {
-    [self.addArray addObject:self.allList[sender.tag]];
-    NSLog(@"add %d",sender);
-    
+    //[self.addArray addObject:];
+    //NSLog(@"add %d",sender);
+    NSDictionary *info = self.allList[sender.tag];
+    if([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]){
+        [COM.mLoveHelper removeLoverInfo:info];
+
+        [QMUITips showWithText:@"删除成功" inView:self.view hideAfterDelay:1.5];
+
+        [self.tableView reloadData];
+    }
+    else {
+
+        [COM.mLoveHelper addLoverInfo:info];
+        [QMUITips showWithText:@"添加成功" inView:self.view hideAfterDelay:1.5];
+    }
+
+    return;
 }
+
+
 
 #pragma mark - UITableViewDataSource
 
@@ -63,27 +82,35 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"NewsViewController";
-    
+    NSDictionary *info = self.allList[(NSUInteger)indexPath.row];
+
     UITableViewCell *cell = nil;//[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
-        UIButton *btn = nil;//(UIButton*)[cell viewWithTag:1024];
+        QMUIGhostButton *btn = nil;//(UIButton*)[cell viewWithTag:1024];
         if (btn==NULL) {
-            btn = [UIButton buttonWithType:UIButtonTypeCustom];
+
+            btn = [[QMUIGhostButton alloc] initWithGhostColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:.2]];
             [btn setFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-40-5, 5, 40, 40)];
-            [btn setBackgroundColor:[UIColor blueColor]];
-            [btn setTitle:@"添加" forState:UIControlStateNormal ];
+            //[btn setBackgroundColor:[UIColor blueColor]];
+
             [btn addTarget:self action:@selector(addNewsItemForButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [cell addSubview:btn];
+
+            if([info[@"cid"]isEqualToString:SH_MyLoveCatFlag]) {
+                [btn setTitle:@" - " forState:UIControlStateNormal ];
+                btn.ghostColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.2];
+            }
+            else {
+                [btn setTitle:@" + " forState:UIControlStateNormal ];
+            }
         }
         
         btn.tag = indexPath.row;
     }
-    
-    NSDictionary *info = self.allList[(NSUInteger)indexPath.row];
-    
+
     [cell.textLabel setText:info[@"tname"]];
     [cell.detailTextLabel setText:info[@"alias"]];
     
@@ -91,11 +118,12 @@
     
     NSLog(@"%@",imageURL);
     [cell.imageView setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"] isNeed:self.isNeedImage];
-    
-    
-    
+
     //cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
+    cell.backgroundColor = [COM randColor];
+
     return cell;
 }
 
