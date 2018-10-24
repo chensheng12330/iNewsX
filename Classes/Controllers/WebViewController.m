@@ -36,10 +36,14 @@
     
     
     NSURLRequest *requst = [NSURLRequest requestWithURL:[NSURL URLWithString:self.addressURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:60];
-    
+
+    QMUITips *tip = [QMUITips showLoading:@"努力加载中..." inView:self.view];
+
     //异步链接(形式1,较少用)
     [NSURLConnection sendAsynchronousRequest:requst queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-       
+
+        [tip hideAnimated:YES];
+        
         if (connectionError==NULL) {
          
             NSDictionary *infoData = [data objectFromJSONData];

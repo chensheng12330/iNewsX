@@ -51,6 +51,7 @@
     self.textLabel.textColor = [UIColor darkGrayColor];
     self.detailTextLabel.font = [UIFont systemFontOfSize:DT_SIZE];
     self.detailTextLabel.numberOfLines = 0;
+    //self.detailTextLabel.textColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5];
     self.selectionStyle = UITableViewCellSelectionStyleGray;
     
     self.lbDate = [[UILabel alloc] init];

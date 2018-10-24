@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 -(UIColor*) randColor;
-
+-(UIColor*) randColorWithAlpha:(float)alpha;
 @end
 
 NS_ASSUME_NONNULL_END

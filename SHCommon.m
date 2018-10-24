@@ -33,4 +33,9 @@
 
 }
 
+-(UIColor*) randColorWithAlpha:(float)alpha {
+    return [UIColor colorWithRed:rand()%255/255.0 green:rand()%255/255.0 blue:rand()%255/255.0 alpha:alpha];
+
+}
+
 @end

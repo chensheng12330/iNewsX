@@ -39,6 +39,8 @@
 @property (nonatomic,retain) MJRefreshFooterView *footer;
 
 @property (nonatomic,assign) NSInteger limit;
+
+@property(nonatomic, strong) NSMutableDictionary *mReadList;
 @end
 
 @implementation GlobalTimelineViewController
@@ -59,7 +61,12 @@
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
 
+    QMUITips *tip = [QMUITips showLoading:@"努力加载中..." inView:self.view];
+
     NSURLSessionTask *task = [Post globalTimelinePostsWithBlock:^(NSArray *posts, NSError *error)   {
+
+        [tip hideAnimated:YES];
+        
         if (!error) {
             self.posts = posts;
             [self.tableView reloadData];
@@ -100,7 +107,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.mReadList = [[NSMutableDictionary alloc] init];
     //self.title = NSLocalizedString(@"AFNetworking", nil);
     
     self.title = self.newsItemInfo[@"tname"];
@@ -143,7 +151,18 @@
     if (!cell) {
         cell = [[PostTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
+
+    //
+    NSString *row = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    if ( self.mReadList[row] == NULL  ) {
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        cell.textLabel.textColor = [COM randColorWithAlpha:0.35f];
+        cell.detailTextLabel.textColor = [COM randColorWithAlpha:0.4f];
+    }
+
     cell.post = [self.posts objectAtIndex:(NSUInteger)indexPath.row];
     
     return cell;
@@ -161,7 +180,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
+    NSString *row = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    self.mReadList[row] = @"1";
+
+
+    PostTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+    cell.textLabel.textColor = [COM randColorWithAlpha:0.35f];
+    cell.detailTextLabel.textColor = [COM randColorWithAlpha:0.4f];
+
     //NSDictionary *info = self.posts[(NSUInteger)indexPath.row];
     Post *post = self.posts[(NSUInteger)indexPath.row];
     
