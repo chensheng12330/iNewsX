@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2982AD3217107C0000FFF048 /* adn.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2982AD3117107C0000FFF048 /* adn.cer */; };
-		58A1225E1B31B18C003C9807 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A1225C1B31B18C003C9807 /* TemplateIcon2x.png */; };
 		58A122651B31B27F003C9807 /* AllListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A122641B31B27F003C9807 /* AllListTableViewController.m */; };
 		58A122671B31B693003C9807 /* all.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58A122661B31B693003C9807 /* all.txt */; };
 		58A1226A1B31BCB2003C9807 /* DetailItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A122691B31BCB2003C9807 /* DetailItemTableViewController.m */; };
 		58A1227D1B31CFF2003C9807 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1227C1B31CFF2003C9807 /* WebViewController.m */; };
-		58C03D8E1B306BF200390F8D /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C03D8D1B306BF200390F8D /* NewsViewController.m */; };
 		D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */; };
 		D47A6B4D1F17614000A23F14 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A6B291F17614000A23F14 /* AFHTTPRequestOperation.m */; };
 		D47A6B4E1F17614000A23F14 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D47A6B2B1F17614000A23F14 /* AFHTTPRequestOperationManager.m */; };
@@ -163,8 +160,6 @@
 		D4D3D280217C3A9E00677D92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D27F217C3A9E00677D92 /* ImageIO.framework */; };
 		D4D3D282217C3AEF00677D92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D281217C3AEF00677D92 /* CoreMedia.framework */; };
 		D4D3D284217C3B5900677D92 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D283217C3B5900677D92 /* PhotosUI.framework */; };
-		E8C2E7A618970EE40097DCC8 /* root_ca.cer in Resources */ = {isa = PBXBuildFile; fileRef = E8C2E7A418970EE00097DCC8 /* root_ca.cer */; };
-		E8C2E7A718970EE40097DCC8 /* digicert_ca_3.cer in Resources */ = {isa = PBXBuildFile; fileRef = E8C2E7A518970EE00097DCC8 /* digicert_ca_3.cer */; };
 		F8129C7415910C37009BFE23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8129C7215910C37009BFE23 /* AppDelegate.m */; };
 		F818101615E6A0C600EF93C2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ABD6EC159FC2CE001BE42C /* MobileCoreServices.framework */; };
 		F88812F016C533D6003C8B8C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E469E013957DF100DB05C8 /* Security.framework */; };
@@ -183,9 +178,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2982AD3117107C0000FFF048 /* adn.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = adn.cer; sourceTree = SOURCE_ROOT; };
 		50ABD6EC159FC2CE001BE42C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		58A1225C1B31B18C003C9807 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = SOURCE_ROOT; };
 		58A122631B31B27F003C9807 /* AllListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllListTableViewController.h; sourceTree = "<group>"; };
 		58A122641B31B27F003C9807 /* AllListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllListTableViewController.m; sourceTree = "<group>"; };
 		58A122661B31B693003C9807 /* all.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = all.txt; sourceTree = SOURCE_ROOT; };
@@ -193,8 +186,6 @@
 		58A122691B31BCB2003C9807 /* DetailItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailItemTableViewController.m; sourceTree = "<group>"; };
 		58A1227B1B31CFF2003C9807 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		58A1227C1B31CFF2003C9807 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		58C03D8C1B306BF200390F8D /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
-		58C03D8D1B306BF200390F8D /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		D411DD271FDA8BEE00B0E0D9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		D47A6B281F17614000A23F14 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -492,8 +483,6 @@
 		D4D3D27F217C3A9E00677D92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D4D3D281217C3AEF00677D92 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D4D3D283217C3B5900677D92 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
-		E8C2E7A418970EE00097DCC8 /* root_ca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = root_ca.cer; sourceTree = SOURCE_ROOT; };
-		E8C2E7A518970EE00097DCC8 /* digicert_ca_3.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = digicert_ca_3.cer; sourceTree = SOURCE_ROOT; };
 		F8129C3815910830009BFE23 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
 		F8129C7215910C37009BFE23 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		F8129C7315910C37009BFE23 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -1025,8 +1014,6 @@
 			children = (
 				F8FA9498150EF9DA00ED4EAD /* GlobalTimelineViewController.h */,
 				F8FA9499150EF9DA00ED4EAD /* GlobalTimelineViewController.m */,
-				58C03D8C1B306BF200390F8D /* NewsViewController.h */,
-				58C03D8D1B306BF200390F8D /* NewsViewController.m */,
 				58A122631B31B27F003C9807 /* AllListTableViewController.h */,
 				58A122641B31B27F003C9807 /* AllListTableViewController.m */,
 				58A122681B31BCB2003C9807 /* DetailItemTableViewController.h */,
@@ -1125,11 +1112,7 @@
 		F8E4696B1395739D00DB05C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E8C2E7A418970EE00097DCC8 /* root_ca.cer */,
-				E8C2E7A518970EE00097DCC8 /* digicert_ca_3.cer */,
-				2982AD3117107C0000FFF048 /* adn.cer */,
 				58A122661B31B693003C9807 /* all.txt */,
-				58A1225C1B31B18C003C9807 /* TemplateIcon2x.png */,
 				F8DA09E31396AC040057D0CC /* main.m */,
 				F8129C3815910830009BFE23 /* Prefix.pch */,
 				F8E4696C1395739D00DB05C8 /* iOS-Info.plist */,
@@ -1220,12 +1203,8 @@
 			files = (
 				D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */,
 				58A122671B31B693003C9807 /* all.txt in Resources */,
-				E8C2E7A718970EE40097DCC8 /* digicert_ca_3.cer in Resources */,
 				F8FA94D1150F094D00ED4EAD /* profile-image-placeholder@2x.png in Resources */,
-				58A1225E1B31B18C003C9807 /* TemplateIcon2x.png in Resources */,
-				E8C2E7A618970EE40097DCC8 /* root_ca.cer in Resources */,
 				D4D3D253217C2A7500677D92 /* QMUIResources.bundle in Resources */,
-				2982AD3217107C0000FFF048 /* adn.cer in Resources */,
 				D47A6B6D1F17622300A23F14 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1345,7 +1324,6 @@
 				D47A6B4E1F17614000A23F14 /* AFHTTPRequestOperationManager.m in Sources */,
 				D47A6B711F17622300A23F14 /* MJRefreshHeaderView.m in Sources */,
 				D4D3D246217C2A7500677D92 /* QMUIStaticTableViewCellDataSource.m in Sources */,
-				58C03D8E1B306BF200390F8D /* NewsViewController.m in Sources */,
 				D4D3D218217C2A7500677D92 /* QMUIToolbarButton.m in Sources */,
 				D4D3D231217C2A7500677D92 /* QMUIOrderedDictionary.m in Sources */,
 				58A1226A1B31BCB2003C9807 /* DetailItemTableViewController.m in Sources */,

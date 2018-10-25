@@ -61,20 +61,26 @@
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
 
-    QMUITips *tip = [QMUITips showLoading:@"努力加载中..." inView:self.view];
+    //QMUITips *tip = [QMUITips showLoading:@"努力加载中..." inView:self.view];
 
     NSURLSessionTask *task = [Post globalTimelinePostsWithBlock:^(NSArray *posts, NSError *error)   {
 
-        [tip hideAnimated:YES];
+        //[tip hideAnimated:YES];
         
         if (!error) {
             self.posts = posts;
             [self.tableView reloadData];
+
+            [QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:2];
+        }
+        else{
+            [QMUITips showError:@"加载失败" inView:COM.appDelegate.window hideAfterDelay:2];
         }
     } part:url];
 
-    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    //[UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
     [self.refreshControl setRefreshingWithStateOfTask:task];
+
 }
 
 -(void)loadMore:(MJRefreshBaseView *)refreshView

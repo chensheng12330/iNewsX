@@ -50,7 +50,7 @@
 + (NSURLSessionDataTask *)globalTimelinePostsWithBlock:(void (^)(NSArray *posts, NSError *error))block part:(NSString*) partStr{
     return [[AFAppDotNetAPIClient sharedClient] GET:partStr parameters:nil success:^(NSURLSessionDataTask * __unused task, NSDictionary* JSON) {
         
-        NSString *key = [[JSON allKeys]firstObject];
+        NSString *key = [[JSON allKeys] firstObject];
         
         NSArray *postsFromResponse = JSON[key];
         

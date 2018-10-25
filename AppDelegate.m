@@ -23,7 +23,6 @@
 #import "AppDelegate.h"
 
 #import "GlobalTimelineViewController.h"
-#import "NewsViewController.h"
 #import "AllListTableViewController.h"
 
 #import "AFNetworkActivityIndicatorManager.h"
@@ -47,7 +46,8 @@ didFinishLaunchingWithOptions:(__unused NSDictionary *)launchOptions
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
-    
+
+    COM.appDelegate = self;
     return YES;
 }
 

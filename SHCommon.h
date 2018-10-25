@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SHLoveHelper.h"
+# import "AppDelegate.h"
 
 #define COM [SHCommon sharedInstance]
 
@@ -18,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHCommon : NSObject
 
 @property(nonatomic, strong) SHLoveHelper *mLoveHelper;
-
+@property(nonatomic, strong) AppDelegate *appDelegate;
 
 + (instancetype)sharedInstance;
 
