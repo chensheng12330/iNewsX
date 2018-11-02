@@ -91,7 +91,7 @@
 
             [self.tableView reloadData];
 
-            [QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:1];
+            //[QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:1];
         }
         else {
             [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:2];

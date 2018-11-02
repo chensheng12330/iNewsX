@@ -38,30 +38,29 @@
 
 
 /**  公共头部设置  */
-//- (NSDictionary *)requestHeaderFieldValueDictionary
-//{
-//    /*
-//     @"token":kSharedUser.token.length>0 ? kSharedUser.token:@""
-//     */
-//    //appId   => 设备ID值
-//    //version => app当前版本
-//    //system: 0 安卓， 1 ios , 2 微信，  3 js
-//    //current:当前登录用户Id
-//    //token：当前登录用户Id对应的token
-//
-//    NSMutableDictionary *headerDictionary=@{@"appId": @"aaa",
-//                                     @"version": kAPPVersion,
-//                                     @"system": @"1"
-//                                     }.mutableCopy;
-//
-//
-//    return headerDictionary;
-//}
+- (NSDictionary *)requestHeaderFieldValueDictionary
+{
+    /*
+     @"token":kSharedUser.token.length>0 ? kSharedUser.token:@""
+     */
+    //appId   => 设备ID值
+    //version => app当前版本
+    //system: 0 安卓， 1 ios , 2 微信，  3 js
+    //current:当前登录用户Id
+    //token：当前登录用户Id对应的token
+
+    NSMutableDictionary *headerDictionary=@{@"User-C": @"572R5piT5Y+35paH56ug",
+                                            @"User-Agent": @"NewsApp/30.1 iOS/11.4 (iPhone10,3)",
+                                     }.mutableCopy;
+
+
+    return headerDictionary;
+}
 
 //! 请求超时时间
 - (NSTimeInterval)requestTimeoutInterval
 {
-    return 20; //秒
+    return 30; //秒
 }
 
 - (YTKRequestMethod)requestMethod {

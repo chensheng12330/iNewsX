@@ -95,7 +95,11 @@
         [self.webView loadHTMLString:htmlCode baseURL:[NSURL URLWithString:self.addressURL]];
 
         // [tip hideAnimated:YES];
+        if(body.length<1) {
 
+            [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:2];
+            
+        }
 
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
 
