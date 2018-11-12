@@ -49,10 +49,39 @@
     //current:当前登录用户Id
     //token：当前登录用户Id对应的token
 
-    NSMutableDictionary *headerDictionary=@{@"User-C": @"572R5piT5Y+35paH56ug",
-                                            @"User-Agent": @"NewsApp/30.1 iOS/11.4 (iPhone10,3)",
-                                     }.mutableCopy;
+    /*
 
+     Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0) Gecko/20100101 Firefox/63.0
+     text/html,application/xhtml+xml,application/xml;q=0.9,*
+     @"User-C": @"572R5piT5Y+35paH56ug",
+     */
+//    NSMutableDictionary *headerDictionary=@{
+//                                            @"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:63.0)",
+//                                            @"Accept":@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+//                                     }.mutableCopy;
+
+    /*
+     @"User-D": @"Q9duE1ybWG0v0LK7T7nd2e0UMEA5a8d2nnfgTh/O7/kLobJcMsq7Q1/J0sv35EGo",
+     @"User-N": @"/gv3ptixznNuPZGK2rxlWa+ql4kn60ovuSkt3LEVh1Y7yZdSS7sKRDOOGfpo1zdR",
+     @"X-Trace-Id": @"1541989782_7583658624_C6593DFA-CCBC-462C-BC03-10F087B39EA9",
+    @"User-C": @"5oiR",
+    @"User-Agent": @"NewsApp/30.1 iOS/11.4 (iPhone10,3)",
+    @"Accept-Language": @"zh-Hans;q=1.0",
+    @"Accept-Encoding": @"gzip;q=1.0, compress;q=0.5",
+
+
+     */
+
+    NSMutableDictionary *headerDictionary=@{
+                                            @"User-D": @"Q9duE1ybWG0v0LK7T7nd2e0UMEA5a8d2nnfgTh/O7/kLobJcMsq7Q1/J0sv35EGo",
+                                            @"User-N": @"/gv3ptixznNuPZGK2rxlWa+ql4kn60ovuSkt3LEVh1Y7yZdSS7sKRDOOGfpo1zdR",
+                                            @"X-Trace-Id": @"1541989782_7583658624_C6593DFA-CCBC-462C-BC03-10F087B39EA9",
+                                            @"User-C": @"5oiR",
+                                            @"User-Agent": @"NewsApp/30.1 iOS/11.4 (iPhone10,3)",
+                                            @"Accept-Language": @"zh-Hans;q=1.0",
+                                            @"Accept-Encoding": @"gzip;q=1.0, compress;q=0.5",
+                                            @"Accept":@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+                                            }.mutableCopy;
 
     return headerDictionary;
 }

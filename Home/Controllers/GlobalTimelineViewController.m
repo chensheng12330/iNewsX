@@ -36,6 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.limit = 0;
+
     self.mReadList = [[NSMutableDictionary alloc] init];
 
 
@@ -94,7 +96,7 @@
             //[QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:1];
         }
         else {
-            [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:2];
+            [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:1.0];
         }
 
 
@@ -124,15 +126,16 @@
 
         if(responseData.tab_list.count>0){
 
-            NSMutableArray *addM = [NSMutableArray arrayWithArray: responseData.tab_list];
-            [addM addObjectsFromArray:self.posts];
+            NSMutableArray *addM = [NSMutableArray arrayWithArray: self.posts];
+            [addM addObjectsFromArray:responseData.tab_list];
+
             self.posts = addM;
 
-            self.limit+= SH_MAX;
+            self.limit+= (NSInteger) responseData.tab_list.count;
 
             [self.tableView reloadData];
 
-            [QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:2];
+            //[QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:1];
         }
         else {
             [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:2];

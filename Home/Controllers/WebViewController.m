@@ -97,7 +97,7 @@
         // [tip hideAnimated:YES];
         if(body.length<1) {
 
-            [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:2];
+            [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:1];
             
         }
 
