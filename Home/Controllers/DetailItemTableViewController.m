@@ -9,6 +9,7 @@
 #import "DetailItemTableViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "GlobalTimelineViewController.h"
+#import "SHHomeWebViewController.h"
 
 @interface DetailItemTableViewController ()
 @property (nonatomic,strong) UIButton *btnSel;
@@ -112,17 +113,26 @@
 
     [cell.textLabel setText:info[@"tname"]];
     [cell.detailTextLabel setText:info[@"alias"]];
-    
-    NSString *imageURL = [NSString stringWithFormat:@"http://timge7.126.net/image?w=68&h=68&quality=75&url=http%%3A%%2F%%2Fimg2.cache.netease.com%%2Fm%%2Fnewsapp%%2Ftopic_icons%%2F%@.png",info[@"img"]];
-    
-    NSLog(@"%@",imageURL);
-    // isNeed:self.isNeedImage
 
-    if (COM.appDelegate.isNeedImage) {
-        [cell.imageView setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    NSString *h5URL = info[@"weburl"];
+
+    if(h5URL.length>0)
+    {
+        [cell.imageView setImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     }
     else {
-        [cell.imageView setImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+
+        NSString *imageURL = [NSString stringWithFormat:@"http://timge7.126.net/image?w=68&h=68&quality=75&url=http%%3A%%2F%%2Fimg2.cache.netease.com%%2Fm%%2Fnewsapp%%2Ftopic_icons%%2F%@.png",info[@"img"]];
+
+        NSLog(@"%@",imageURL);
+        // isNeed:self.isNeedImage
+
+        if (COM.appDelegate.isNeedImage) {
+            [cell.imageView setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+        }
+        else {
+            [cell.imageView setImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+        }
     }
 
     //cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
@@ -142,14 +152,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    GlobalTimelineViewController *gtVC = [[GlobalTimelineViewController alloc] init];
-    
+
     NSDictionary *info = self.allList[(NSUInteger)indexPath.row];
-    
-    gtVC.newsItemInfo = info;
-    
-    [self.navigationController pushViewController:gtVC animated:YES];
-    
+    NSString *h5URL = info[@"weburl"];
+
+    if(h5URL.length>0){
+        SHHomeWebViewController *homeWebVC = [[SHHomeWebViewController alloc] init];
+        homeWebVC.webUrlStr = h5URL;
+        homeWebVC.title = info[@"tname"];
+        [self.navigationController pushViewController:homeWebVC animated:YES];
+    }
+    else {
+
+        GlobalTimelineViewController *gtVC = [[GlobalTimelineViewController alloc] init];
+        gtVC.newsItemInfo = info;
+        [self.navigationController pushViewController:gtVC animated:YES];
+    }
     return;
 }
 

@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 #define SH_MyLoveCatFlag @"520"
+#define SH_DengTaFlag @"521"
 
 @interface SHLoveHelper : NSObject
 

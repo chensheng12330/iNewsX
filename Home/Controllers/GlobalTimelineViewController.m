@@ -99,7 +99,6 @@
             [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:1.0];
         }
 
-
     } failure:^( YTKBaseRequest * _Nonnull request) {
 
         [tip hideAnimated:YES];

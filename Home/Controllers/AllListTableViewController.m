@@ -11,8 +11,11 @@
 #import "AppDelegate.h"
 #import "SHLoveHelper.h"
 
+//全部分类列表
 @interface AllListTableViewController ()
 @property (readwrite, nonatomic, strong) NSArray *allList;
+
+@property (nonatomic, strong) NSArray *mDengTaList;
 
 @property (assign) BOOL isNeedImage;
 @end
@@ -46,6 +49,7 @@
         self.allList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
         //[data objectFromJSONData];
+        [self getDengTaData];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -92,6 +96,14 @@
     }
 }
 
+-(void) getDengTaData {
+
+    NSData *data = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DengTa" ofType:@"json"] ];
+
+    self.mDengTaList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    return ;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(__unused UITableView *)tableView
@@ -117,6 +129,9 @@
     NSUInteger count ;
     if([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]) {
         count = COM.mLoveHelper.arLoverList.count;
+    }
+    else if([info[@"cid"] isEqualToString:SH_DengTaFlag]){
+        count = self.mDengTaList.count;
     }
     else {
         count = ((NSArray*)info[@"tList"]).count;
@@ -146,6 +161,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
     if ([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]) {
         detailItemVC.allList   = COM.mLoveHelper.arLoverList;
+    }
+    else if([info[@"cid"] isEqualToString:SH_DengTaFlag]){
+        detailItemVC.allList   = self.mDengTaList;
     }
     else {
         NSArray *newsList = info[@"tList"];

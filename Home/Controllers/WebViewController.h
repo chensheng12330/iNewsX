@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+//文章详情
 @interface WebViewController : UIViewController
 
 @property (nonatomic, strong) NSString *docid;

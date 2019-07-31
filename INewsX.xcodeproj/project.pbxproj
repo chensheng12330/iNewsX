@@ -21,6 +21,9 @@
 		D4B21FE9218AF84D0017E02B /* JKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FE8218AF84D0017E02B /* JKLoadingView.m */; };
 		D4B21FEB218AF8960017E02B /* qz_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = D4B21FEA218AF8960017E02B /* qz_loading.gif */; };
 		D4B21FED218AFA4B0017E02B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B21FEC218AFA4B0017E02B /* WebKit.framework */; };
+		D4B70C8B22F04DDC00439B00 /* SHHomeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B70C8A22F04DDC00439B00 /* SHHomeWebViewController.m */; };
+		D4B70C8E22F04DF800439B00 /* SHDetailWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B70C8D22F04DF800439B00 /* SHDetailWebViewController.m */; };
+		D4B70C9022F13A1800439B00 /* DengTa.json in Resources */ = {isa = PBXBuildFile; fileRef = D4B70C8F22F13A1800439B00 /* DengTa.json */; };
 		D4D3D101217B56AD00677D92 /* SHLoveHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D3D100217B56AD00677D92 /* SHLoveHelper.m */; };
 		D4D3D104217B5E2200677D92 /* SHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D3D103217B5E2200677D92 /* SHCommon.m */; };
 		D4D3D276217C2C7600677D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D275217C2C7600677D92 /* QuartzCore.framework */; };
@@ -83,6 +86,11 @@
 		D4B21FE8218AF84D0017E02B /* JKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLoadingView.m; sourceTree = "<group>"; };
 		D4B21FEA218AF8960017E02B /* qz_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = qz_loading.gif; path = "../../bjqr/qzzx-ios/QianZi/QianZi/Resource/OtherPIC/qz_loading.gif"; sourceTree = "<group>"; };
 		D4B21FEC218AFA4B0017E02B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D4B70C8922F04DDC00439B00 /* SHHomeWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHomeWebViewController.h; sourceTree = "<group>"; };
+		D4B70C8A22F04DDC00439B00 /* SHHomeWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHomeWebViewController.m; sourceTree = "<group>"; };
+		D4B70C8C22F04DF800439B00 /* SHDetailWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHDetailWebViewController.h; sourceTree = "<group>"; };
+		D4B70C8D22F04DF800439B00 /* SHDetailWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHDetailWebViewController.m; sourceTree = "<group>"; };
+		D4B70C8F22F13A1800439B00 /* DengTa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DengTa.json; sourceTree = "<group>"; };
 		D4D3D0FF217B56AD00677D92 /* SHLoveHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHLoveHelper.h; sourceTree = "<group>"; };
 		D4D3D100217B56AD00677D92 /* SHLoveHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHLoveHelper.m; sourceTree = "<group>"; };
 		D4D3D102217B5E2200677D92 /* SHCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHCommon.h; sourceTree = "<group>"; };
@@ -258,14 +266,18 @@
 		F8DA09C61396AB690057D0CC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F8FA9498150EF9DA00ED4EAD /* GlobalTimelineViewController.h */,
-				F8FA9499150EF9DA00ED4EAD /* GlobalTimelineViewController.m */,
 				58A122631B31B27F003C9807 /* AllListTableViewController.h */,
 				58A122641B31B27F003C9807 /* AllListTableViewController.m */,
 				58A122681B31BCB2003C9807 /* DetailItemTableViewController.h */,
 				58A122691B31BCB2003C9807 /* DetailItemTableViewController.m */,
+				F8FA9498150EF9DA00ED4EAD /* GlobalTimelineViewController.h */,
+				F8FA9499150EF9DA00ED4EAD /* GlobalTimelineViewController.m */,
 				58A1227B1B31CFF2003C9807 /* WebViewController.h */,
 				58A1227C1B31CFF2003C9807 /* WebViewController.m */,
+				D4B70C8922F04DDC00439B00 /* SHHomeWebViewController.h */,
+				D4B70C8A22F04DDC00439B00 /* SHHomeWebViewController.m */,
+				D4B70C8C22F04DF800439B00 /* SHDetailWebViewController.h */,
+				D4B70C8D22F04DF800439B00 /* SHDetailWebViewController.m */,
 			);
 			name = Controllers;
 			path = Home/Controllers;
@@ -364,6 +376,7 @@
 				F8DA09E31396AC040057D0CC /* main.m */,
 				F8129C3815910830009BFE23 /* Prefix.pch */,
 				F8E4696C1395739D00DB05C8 /* iOS-Info.plist */,
+				D4B70C8F22F13A1800439B00 /* DengTa.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -411,7 +424,7 @@
 				ORGANIZATIONNAME = Sherwin.Chen;
 				TargetAttributes = {
 					F8E4695F1395739C00DB05C8 = {
-						DevelopmentTeam = 36F4USY6Q9;
+						DevelopmentTeam = XUNW2N8DNY;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -444,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */,
+				D4B70C9022F13A1800439B00 /* DengTa.json in Resources */,
 				58A122671B31B693003C9807 /* all.txt in Resources */,
 				D4B21FEB218AF8960017E02B /* qz_loading.gif in Resources */,
 				F8FA94D1150F094D00ED4EAD /* profile-image-placeholder@2x.png in Resources */,
@@ -518,6 +532,7 @@
 				58A122651B31B27F003C9807 /* AllListTableViewController.m in Sources */,
 				F8FA9494150EF97E00ED4EAD /* SHNewsInfoModel.m in Sources */,
 				D4B21FE9218AF84D0017E02B /* JKLoadingView.m in Sources */,
+				D4B70C8E22F04DF800439B00 /* SHDetailWebViewController.m in Sources */,
 				F8FA9497150EF98800ED4EAD /* User.m in Sources */,
 				D4B21FD4218856920017E02B /* SHBaseNavigationController.m in Sources */,
 				D4B21FD5218856920017E02B /* SHBaseViewController.m in Sources */,
@@ -527,6 +542,7 @@
 				58A1226A1B31BCB2003C9807 /* DetailItemTableViewController.m in Sources */,
 				F8FA949A150EF9DA00ED4EAD /* GlobalTimelineViewController.m in Sources */,
 				F8FA94C1150F019100ED4EAD /* PostTableViewCell.m in Sources */,
+				D4B70C8B22F04DDC00439B00 /* SHHomeWebViewController.m in Sources */,
 				F8129C7415910C37009BFE23 /* AppDelegate.m in Sources */,
 				D4B21FD3218856920017E02B /* SHBaseResponse.m in Sources */,
 				D4D3D101217B56AD00677D92 /* SHLoveHelper.m in Sources */,
@@ -597,7 +613,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 36F4USY6Q9;
+				DEVELOPMENT_TEAM = XUNW2N8DNY;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -661,7 +677,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = 36F4USY6Q9;
+				DEVELOPMENT_TEAM = XUNW2N8DNY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_SHORT_ENUMS = YES;
