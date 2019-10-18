@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUIButton.m
 //  qmui
 //
-//  Created by MoLice on 14-7-7.
-//  Copyright (c) 2014年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 14-7-7.
 //
 
 #import "QMUIButton.h"
@@ -77,7 +84,7 @@
             // 图片和文字上下排版时，宽度以文字或图片的最大宽度为最终宽度
             if (isImageViewShowing) {
                 CGFloat imageLimitWidth = contentLimitSize.width - UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets);
-                CGSize imageSize = self.currentImage.size;
+                CGSize imageSize = self.imageView.image ? [self.imageView sizeThatFits:CGSizeMake(imageLimitWidth, CGFLOAT_MAX)] : self.currentImage.size;
                 imageSize.width = fmin(imageSize.width, imageLimitWidth);
                 imageTotalSize = CGSizeMake(imageSize.width + UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
             }
@@ -102,7 +109,7 @@
             
             if (isImageViewShowing) {
                 CGFloat imageLimitHeight = contentLimitSize.height - UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets);
-                CGSize imageSize = self.currentImage.size;
+                CGSize imageSize = self.imageView.image ? [self.imageView sizeThatFits:CGSizeMake(CGFLOAT_MAX, imageLimitHeight)] : self.currentImage.size;
                 imageSize.height = fmin(imageSize.height, imageLimitHeight);
                 imageTotalSize = CGSizeMake(imageSize.width + UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), imageSize.height + UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
             }
@@ -149,7 +156,7 @@
     // 图片的布局原则都是尽量完整展示，所以不管 imagePosition 的值是什么，这个计算过程都是相同的
     if (isImageViewShowing) {
         imageLimitSize = CGSizeMake(contentSize.width - UIEdgeInsetsGetHorizontalValue(self.imageEdgeInsets), contentSize.height - UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets));
-        CGSize imageSize = [self.imageView sizeThatFits:imageLimitSize];
+        CGSize imageSize = self.imageView.image ? [self.imageView sizeThatFits:imageLimitSize] : self.currentImage.size;
         imageSize.width = fmin(imageLimitSize.width, imageSize.width);
         imageSize.height = fmin(imageLimitSize.height, imageSize.height);
         imageFrame = CGRectMakeWithSize(imageSize);
@@ -517,12 +524,12 @@
     if (self.currentImage) {
         NSArray<NSNumber *> *states = @[@(UIControlStateNormal), @(UIControlStateHighlighted), @(UIControlStateSelected), @(UIControlStateSelected|UIControlStateHighlighted), @(UIControlStateDisabled)];
         
-        // 实际上对于 UIButton 而言如果设置了 UIControlStateNormal 的 image，则其他所有 state 下的 image 默认都会返回 normal 这张图，所以这个判断只对 UIControlStateNormal 做就行了
-        UIImage *normalImage = [self imageForState:UIControlStateNormal];
-        if (!normalImage) return;
-        
         for (NSNumber *number in states) {
             UIImage *image = [self imageForState:number.unsignedIntegerValue];
+            if (!image) {
+                return;
+            }
+            
             if (self.adjustsImageTintColorAutomatically) {
                 // 这里的 setImage: 操作不需要使用 renderingMode 对 image 重新处理，而是放到重写的 setImage:forState 里去做就行了
                 [self setImage:image forState:[number unsignedIntegerValue]];
@@ -538,6 +545,7 @@
     if (self.adjustsImageTintColorAutomatically) {
         image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     }
+    
     [super setImage:image forState:state];
 }
 
@@ -552,15 +560,12 @@
 }
 
 - (void)setTintColorAdjustsTitleAndImage:(UIColor *)tintColorAdjustsTitleAndImage {
+    _tintColorAdjustsTitleAndImage = tintColorAdjustsTitleAndImage;
     if (tintColorAdjustsTitleAndImage) {
         self.tintColor = tintColorAdjustsTitleAndImage;
         self.adjustsTitleTintColorAutomatically = YES;
         self.adjustsImageTintColorAutomatically = YES;
     }
-}
-
-- (UIColor *)tintColorAdjustsTitleAndImage {
-    return self.tintColor;
 }
 
 @end

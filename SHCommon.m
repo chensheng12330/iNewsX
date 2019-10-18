@@ -38,4 +38,33 @@
 
 }
 
+
+-(BOOL) getNeedImage {
+    NSString *f1 =  [iCloudHandle getKeyValueICloudStoreWithKey:kImageSwitch];
+    if (f1) {
+        return [f1 boolValue];
+    }
+
+    return YES;
+}
+
+-(NSString*) getFontSize {
+    NSString *f2 =  [iCloudHandle getKeyValueICloudStoreWithKey:kFontSize];
+
+    if (f2) {
+        return f2;
+    }
+
+    return @"18";
+}
+
+-(NSString*) getBgColor {
+    NSString *f3 =  [iCloudHandle getKeyValueICloudStoreWithKey:kBgColor];
+
+    if (f3){
+        return f3;
+    }
+    return @"C7EDCC";
+}
+
 @end

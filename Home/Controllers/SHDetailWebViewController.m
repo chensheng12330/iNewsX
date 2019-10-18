@@ -32,6 +32,8 @@
     self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.navigationDelegate = self;
+    self.webView.scrollView.showsVerticalScrollIndicator = YES;
+    self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleDefault;
     [self.view addSubview:self.webView];
 
     self.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

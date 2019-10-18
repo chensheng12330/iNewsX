@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUIPopupMenuView.h
 //  qmui
 //
-//  Created by MoLice on 2017/2/24.
-//  Copyright © 2017年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 2017/2/24.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,13 +19,15 @@
 #import "QMUIPopupMenuBaseItem.h"
 #import "QMUIPopupMenuButtonItem.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  用于弹出浮层里显示一行一行的菜单的控件。
  *  使用方式：
  *  1. 调用 init 方法初始化。
  *  2. 按需设置分隔线、item 高度等样式。
  *  3. 设置完样式后再通过 items 或 itemSections 添加菜单项。
- *  4. 调用 layoutWithTargetView: 或 layoutWithTargetRectInScreenCoordinate: 来布局菜单（参考父类）。
+ *  4. 通过为 sourceBarItem/sourceView/sourceRect 三者中的一个赋值，来决定浮层布局的位置（参考父类）。
  *  5. 调用 showWithAnimated: 即可显示（参考父类）。
  *
  *  注意，QMUIPopupMenuView 的大小默认是按内容自适应的（item 的 sizeThatFits），但同时又受 maximumWidth/minimumWidth 的限制。
@@ -65,3 +74,5 @@
 @property(nonatomic, copy, nullable) NSArray<NSArray<__kindof QMUIPopupMenuBaseItem *> *> *itemSections;
 
 @end
+
+NS_ASSUME_NONNULL_END

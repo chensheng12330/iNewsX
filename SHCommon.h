@@ -15,6 +15,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
+#define kFontSize (@"FontSize")
+#define kBgColor  (@"BgColor")
+#define kImageSwitch (@"ImageSwitch")
+
 
 @interface SHCommon : NSObject
 
@@ -25,6 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(UIColor*) randColor;
 -(UIColor*) randColorWithAlpha:(float)alpha;
+
+-(BOOL) getNeedImage;
+-(NSString*) getFontSize;
+-(NSString*) getBgColor;
 @end
 
 NS_ASSUME_NONNULL_END

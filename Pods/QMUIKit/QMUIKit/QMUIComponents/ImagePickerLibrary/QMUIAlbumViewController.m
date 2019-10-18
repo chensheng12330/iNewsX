@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUIAlbumViewController.m
 //  qmui
 //
-//  Created by Kayo Lee on 15/5/3.
-//  Copyright (c) 2015年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 15/5/3.
 //
 
 #import "QMUIAlbumViewController.h"
@@ -180,19 +187,33 @@ static QMUIAlbumViewController *albumViewControllerAppearance;
             [self showEmptyViewWithLoading];
         }
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            __weak __typeof(self)weakSelf = self;
             [[QMUIAssetsManager sharedInstance] enumerateAllAlbumsWithAlbumContentType:self.contentType usingBlock:^(QMUIAssetsGroup *resultAssetsGroup) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // 这里需要对 UI 进行操作，因此放回主线程处理
-                    __strong __typeof(weakSelf)strongSelf = weakSelf;
-                    if (resultAssetsGroup) {
-                        [strongSelf.albumsArray addObject:resultAssetsGroup];
-                    } else {
-                        [strongSelf refreshAlbumAndShowEmptyTipIfNeed];
-                    }
-                });
+                if (resultAssetsGroup) {
+                    [self.albumsArray addObject:resultAssetsGroup];
+                } else {
+                    // 意味着遍历完所有的相簿了
+                    [self sortAlbumArray];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self refreshAlbumAndShowEmptyTipIfNeed];
+                    });
+                }
             }];
         });
+    }
+}
+
+- (void)sortAlbumArray {
+    // 把隐藏相册排序强制放到最后
+    __block QMUIAssetsGroup *hiddenGroup = nil;
+    [self.albumsArray enumerateObjectsUsingBlock:^(QMUIAssetsGroup * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.phAssetCollection.assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumAllHidden) {
+            hiddenGroup = obj;
+            *stop = YES;
+        }
+    }];
+    if (hiddenGroup) {
+        [self.albumsArray removeObject:hiddenGroup];
+        [self.albumsArray addObject:hiddenGroup];
     }
 }
 
@@ -246,12 +267,9 @@ static QMUIAlbumViewController *albumViewControllerAppearance;
         cell = [[QMUIAlbumTableViewCell alloc] initForTableView:tableView withStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIdentifer];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    QMUIAssetsGroup *assetsGroup = [self.albumsArray objectAtIndex:indexPath.row];
-    // 显示相册缩略图
+    QMUIAssetsGroup *assetsGroup = self.albumsArray[indexPath.row];
     cell.imageView.image = [assetsGroup posterImageWithSize:CGSizeMake(self.albumTableViewCellHeight, self.albumTableViewCellHeight)];
-    // 显示相册名称
     cell.textLabel.text = [assetsGroup name];
-    // 显示相册中所包含的资源数量
     cell.detailTextLabel.text = [NSString stringWithFormat:@"· %@", @(assetsGroup.numberOfAssets)];
     [cell updateCellAppearanceWithIndexPath:indexPath];
     return cell;

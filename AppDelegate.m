@@ -45,17 +45,4 @@ didFinishLaunchingWithOptions:(__unused NSDictionary *)launchOptions
     return;
 }
 
--(BOOL) isNeedImage {
-    //
-    NSNumber *bNeedImage =  [[NSUserDefaults standardUserDefaults] objectForKey:@"isNeedImage"];
-    
-    return [bNeedImage boolValue];
-}
-
-- (void) setIsNeedImage:(BOOL)isNeedImage {
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@(isNeedImage) forKey:@"isNeedImage"];
-    return;
-}
-
 @end

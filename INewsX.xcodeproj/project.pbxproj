@@ -13,6 +13,8 @@
 		58A1227D1B31CFF2003C9807 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1227C1B31CFF2003C9807 /* WebViewController.m */; };
 		D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */; };
 		D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47A6B761F176EAE00A23F14 /* Images.xcassets */; };
+		D4AFA43D2356A64400368605 /* SHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFA43B2356A64400368605 /* SHSettingViewController.m */; };
+		D4AFA43E2356A64400368605 /* SHSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4AFA43C2356A64400368605 /* SHSettingViewController.xib */; };
 		D4B21FD2218856920017E02B /* SHBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FC9218856920017E02B /* SHBaseRequest.m */; };
 		D4B21FD3218856920017E02B /* SHBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FCB218856920017E02B /* SHBaseResponse.m */; };
 		D4B21FD4218856920017E02B /* SHBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FCE218856920017E02B /* SHBaseNavigationController.m */; };
@@ -34,6 +36,10 @@
 		D4D3D280217C3A9E00677D92 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D27F217C3A9E00677D92 /* ImageIO.framework */; };
 		D4D3D282217C3AEF00677D92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D281217C3AEF00677D92 /* CoreMedia.framework */; };
 		D4D3D284217C3B5900677D92 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D283217C3B5900677D92 /* PhotosUI.framework */; };
+		D4DA729323585AB500055562 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DA729223585AB500055562 /* CloudKit.framework */; };
+		D4DD93FF2359C1640006783C /* iCloudHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DD93FA2359C1640006783C /* iCloudHandle.m */; };
+		D4DD94002359C1640006783C /* ZZRDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DD93FC2359C1640006783C /* ZZRDocument.m */; };
+		D4DD94012359C1640006783C /* ZZRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DD93FE2359C1640006783C /* ZZRModel.m */; };
 		F1A1D4CC5927FCFA70AAD987 /* libPods-INewsX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9929BC50D303BF45C2CA335B /* libPods-INewsX.a */; };
 		F8129C7415910C37009BFE23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8129C7215910C37009BFE23 /* AppDelegate.m */; };
 		F818101615E6A0C600EF93C2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ABD6EC159FC2CE001BE42C /* MobileCoreServices.framework */; };
@@ -66,6 +72,9 @@
 		D411DD271FDA8BEE00B0E0D9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		D47A6B761F176EAE00A23F14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = INewsX/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		D4AFA43A2356A64400368605 /* SHSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingViewController.h; sourceTree = "<group>"; };
+		D4AFA43B2356A64400368605 /* SHSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingViewController.m; sourceTree = "<group>"; };
+		D4AFA43C2356A64400368605 /* SHSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingViewController.xib; sourceTree = "<group>"; };
 		D4B21FC8218856920017E02B /* SHBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBaseRequest.h; sourceTree = "<group>"; };
 		D4B21FC9218856920017E02B /* SHBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBaseRequest.m; sourceTree = "<group>"; };
 		D4B21FCA218856920017E02B /* SHBaseResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBaseResponse.h; sourceTree = "<group>"; };
@@ -103,6 +112,14 @@
 		D4D3D27F217C3A9E00677D92 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D4D3D281217C3AEF00677D92 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D4D3D283217C3B5900677D92 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		D4DA729123583FB600055562 /* INewsX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = INewsX.entitlements; path = INewsX/INewsX.entitlements; sourceTree = "<group>"; };
+		D4DA729223585AB500055562 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D4DD93F92359C1640006783C /* iCloudHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCloudHandle.h; sourceTree = "<group>"; };
+		D4DD93FA2359C1640006783C /* iCloudHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCloudHandle.m; sourceTree = "<group>"; };
+		D4DD93FB2359C1640006783C /* ZZRDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZRDocument.h; sourceTree = "<group>"; };
+		D4DD93FC2359C1640006783C /* ZZRDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZRDocument.m; sourceTree = "<group>"; };
+		D4DD93FD2359C1640006783C /* ZZRModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZRModel.h; sourceTree = "<group>"; };
+		D4DD93FE2359C1640006783C /* ZZRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZRModel.m; sourceTree = "<group>"; };
 		F8129C3815910830009BFE23 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
 		F8129C7215910C37009BFE23 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		F8129C7315910C37009BFE23 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -134,6 +151,7 @@
 				D4B21FED218AFA4B0017E02B /* WebKit.framework in Frameworks */,
 				D4D3D284217C3B5900677D92 /* PhotosUI.framework in Frameworks */,
 				D4D3D282217C3AEF00677D92 /* CoreMedia.framework in Frameworks */,
+				D4DA729323585AB500055562 /* CloudKit.framework in Frameworks */,
 				D4D3D280217C3A9E00677D92 /* ImageIO.framework in Frameworks */,
 				D4D3D27E217C3A8300677D92 /* CoreImage.framework in Frameworks */,
 				D4D3D27C217C3A5500677D92 /* Photos.framework in Frameworks */,
@@ -175,6 +193,7 @@
 		D47A6B261F17614000A23F14 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				D4DD93F82359C1640006783C /* CloudHandle */,
 				D4B21FE6218AF84D0017E02B /* LoadingView */,
 				D411DD261FDA8BEE00B0E0D9 /* Category */,
 			);
@@ -263,6 +282,19 @@
 			path = "../../../bjqr/qzzx-ios/QianZi/QianZi/Utilities/LoadingView";
 			sourceTree = "<group>";
 		};
+		D4DD93F82359C1640006783C /* CloudHandle */ = {
+			isa = PBXGroup;
+			children = (
+				D4DD93F92359C1640006783C /* iCloudHandle.h */,
+				D4DD93FA2359C1640006783C /* iCloudHandle.m */,
+				D4DD93FB2359C1640006783C /* ZZRDocument.h */,
+				D4DD93FC2359C1640006783C /* ZZRDocument.m */,
+				D4DD93FD2359C1640006783C /* ZZRModel.h */,
+				D4DD93FE2359C1640006783C /* ZZRModel.m */,
+			);
+			path = CloudHandle;
+			sourceTree = "<group>";
+		};
 		F8DA09C61396AB690057D0CC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +310,9 @@
 				D4B70C8A22F04DDC00439B00 /* SHHomeWebViewController.m */,
 				D4B70C8C22F04DF800439B00 /* SHDetailWebViewController.h */,
 				D4B70C8D22F04DF800439B00 /* SHDetailWebViewController.m */,
+				D4AFA43A2356A64400368605 /* SHSettingViewController.h */,
+				D4AFA43B2356A64400368605 /* SHSettingViewController.m */,
+				D4AFA43C2356A64400368605 /* SHSettingViewController.xib */,
 			);
 			name = Controllers;
 			path = Home/Controllers;
@@ -310,6 +345,7 @@
 		F8E469551395739C00DB05C8 = {
 			isa = PBXGroup;
 			children = (
+				D4DA729123583FB600055562 /* INewsX.entitlements */,
 				F8E4696A1395739D00DB05C8 /* Classes */,
 				F8E469ED1395812A00DB05C8 /* Images */,
 				F8E469631395739D00DB05C8 /* Frameworks */,
@@ -332,6 +368,7 @@
 		F8E469631395739D00DB05C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4DA729223585AB500055562 /* CloudKit.framework */,
 				D4B21FEC218AFA4B0017E02B /* WebKit.framework */,
 				D4D3D283217C3B5900677D92 /* PhotosUI.framework */,
 				D4D3D281217C3AEF00677D92 /* CoreMedia.framework */,
@@ -424,7 +461,7 @@
 				ORGANIZATIONNAME = Sherwin.Chen;
 				TargetAttributes = {
 					F8E4695F1395739C00DB05C8 = {
-						DevelopmentTeam = XUNW2N8DNY;
+						DevelopmentTeam = H9Z4MVAQY2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -439,6 +476,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = F8E469551395739C00DB05C8;
@@ -458,6 +496,7 @@
 			files = (
 				D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */,
 				D4B70C9022F13A1800439B00 /* DengTa.json in Resources */,
+				D4AFA43E2356A64400368605 /* SHSettingViewController.xib in Resources */,
 				58A122671B31B693003C9807 /* all.txt in Resources */,
 				D4B21FEB218AF8960017E02B /* qz_loading.gif in Resources */,
 				F8FA94D1150F094D00ED4EAD /* profile-image-placeholder@2x.png in Resources */,
@@ -475,12 +514,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-INewsX/Pods-INewsX-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/QMUIKit/QMUIKit/QMUIResources/QMUIResources.bundle",
+				"${PODS_ROOT}/QMUIKit/QMUIKit/QMUIResources/Images.xcassets",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QMUIResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Images.xcassets",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -532,10 +571,14 @@
 				58A122651B31B27F003C9807 /* AllListTableViewController.m in Sources */,
 				F8FA9494150EF97E00ED4EAD /* SHNewsInfoModel.m in Sources */,
 				D4B21FE9218AF84D0017E02B /* JKLoadingView.m in Sources */,
+				D4DD94002359C1640006783C /* ZZRDocument.m in Sources */,
+				D4AFA43D2356A64400368605 /* SHSettingViewController.m in Sources */,
 				D4B70C8E22F04DF800439B00 /* SHDetailWebViewController.m in Sources */,
 				F8FA9497150EF98800ED4EAD /* User.m in Sources */,
 				D4B21FD4218856920017E02B /* SHBaseNavigationController.m in Sources */,
+				D4DD93FF2359C1640006783C /* iCloudHandle.m in Sources */,
 				D4B21FD5218856920017E02B /* SHBaseViewController.m in Sources */,
+				D4DD94012359C1640006783C /* ZZRModel.m in Sources */,
 				58A1227D1B31CFF2003C9807 /* WebViewController.m in Sources */,
 				D4D3D104217B5E2200677D92 /* SHCommon.m in Sources */,
 				D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */,
@@ -609,11 +652,12 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = INewsX/INewsX.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = XUNW2N8DNY;
+				DEVELOPMENT_TEAM = H9Z4MVAQY2;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -673,11 +717,12 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = INewsX/INewsX.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = XUNW2N8DNY;
+				DEVELOPMENT_TEAM = H9Z4MVAQY2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_SHORT_ENUMS = YES;

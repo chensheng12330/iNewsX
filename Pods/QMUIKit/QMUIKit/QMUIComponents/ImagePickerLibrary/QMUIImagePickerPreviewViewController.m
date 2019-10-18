@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUIImagePickerPreviewViewController.m
 //  qmui
 //
-//  Created by Kayo Lee on 15/5/3.
-//  Copyright (c) 2015年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 15/5/3.
 //
 
 #import "QMUIImagePickerPreviewViewController.h"
@@ -97,18 +104,40 @@ static QMUIImagePickerPreviewViewController *imagePickerPreviewViewControllerApp
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
     if (!_singleCheckMode) {
         QMUIAsset *imageAsset = self.imagesAssetArray[self.imagePreviewView.currentImageIndex];
         self.checkboxButton.selected = [self.selectedImageAssetArray containsObject:imageAsset];
+    }
+    
+    BeginIgnoreDeprecatedWarning
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    EndIgnoreDeprecatedWarning
+    
+    if ([self conformsToProtocol:@protocol(QMUICustomNavigationBarTransitionDelegate)]) {
+        UIViewController<QMUICustomNavigationBarTransitionDelegate> *vc = (UIViewController<QMUICustomNavigationBarTransitionDelegate> *)self;
+        if ([vc respondsToSelector:@selector(shouldCustomizeNavigationBarTransitionIfHideable)] &&
+            [vc shouldCustomizeNavigationBarTransitionIfHideable]) {
+        } else {
+            [self.navigationController setNavigationBarHidden:YES animated:NO];
+        }
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    BeginIgnoreDeprecatedWarning
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    EndIgnoreDeprecatedWarning
+    
+    if ([self conformsToProtocol:@protocol(QMUICustomNavigationBarTransitionDelegate)]) {
+        UIViewController<QMUICustomNavigationBarTransitionDelegate> *vc = (UIViewController<QMUICustomNavigationBarTransitionDelegate> *)self;
+        if ([vc respondsToSelector:@selector(shouldCustomizeNavigationBarTransitionIfHideable)] &&
+            [vc shouldCustomizeNavigationBarTransitionIfHideable]) {
+        } else {
+            [self.navigationController setNavigationBarHidden:NO animated:NO];
+        }
+    }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -120,6 +149,10 @@ static QMUIImagePickerPreviewViewController *imagePickerPreviewViewControllerApp
     if (!self.checkboxButton.hidden) {
         self.checkboxButton.frame = CGRectSetXY(self.checkboxButton.frame, CGRectGetWidth(self.topToolBarView.frame) - 10 - self.view.qmui_safeAreaInsets.right - CGRectGetWidth(self.checkboxButton.frame), topToolbarPaddingTop + CGFloatGetCenter(topToolbarContentHeight, CGRectGetHeight(self.checkboxButton.frame)));
     }
+}
+
+- (BOOL)preferredNavigationBarHidden {
+    return YES;
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -210,7 +243,7 @@ static QMUIImagePickerPreviewViewController *imagePickerPreviewViewControllerApp
     if (self.navigationController) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [self exitPreviewAutomatically];
+//        [self exitPreviewAutomatically];
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(imagePickerPreviewViewControllerDidCancel:)]) {
         [self.delegate imagePickerPreviewViewControllerDidCancel:self];
@@ -325,40 +358,40 @@ static QMUIImagePickerPreviewViewController *imagePickerPreviewViewControllerApp
         if (@available(iOS 9.1, *)) {
             if (imageAsset.assetSubType == QMUIAssetSubTypeLivePhoto) {
                 isLivePhoto = YES;
+                imageView.tag = -1;
+                imageAsset.requestID = [imageAsset requestLivePhotoWithCompletion:^void(PHLivePhoto *livePhoto, NSDictionary *info) {
+                    // 这里可能因为 imageView 复用，导致前面的请求得到的结果显示到别的 imageView 上，
+                    // 因此判断如果是新请求（无复用问题）或者是当前的请求才把获得的图片结果展示出来
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        BOOL isNewRequest = (imageView.tag == -1 && imageAsset.requestID == 0);
+                        BOOL isCurrentRequest = imageView.tag == imageAsset.requestID;
+                        BOOL loadICloudImageFault = !livePhoto || info[PHImageErrorKey];
+                        if (!loadICloudImageFault && (isNewRequest || isCurrentRequest)) {
+                            // 如果是走 PhotoKit 的逻辑，那么这个 block 会被多次调用，并且第一次调用时返回的图片是一张小图，
+                            // 这时需要把图片放大到跟屏幕一样大，避免后面加载大图后图片的显示会有跳动
+                            if (@available(iOS 9.1, *)) {
+                                imageView.livePhoto = livePhoto;
+                            }
+                        }
+                        BOOL downloadSucceed = (livePhoto && !info) || (![[info objectForKey:PHLivePhotoInfoCancelledKey] boolValue] && ![info objectForKey:PHLivePhotoInfoErrorKey] && ![[info objectForKey:PHLivePhotoInfoIsDegradedKey] boolValue]);
+                        if (downloadSucceed) {
+                            // 资源资源已经在本地或下载成功
+                            [imageAsset updateDownloadStatusWithDownloadResult:YES];
+                            self.downloadStatus = QMUIAssetDownloadStatusSucceed;
+                            imageView.cloudDownloadStatus = QMUIAssetDownloadStatusSucceed;
+                        } else if ([info objectForKey:PHLivePhotoInfoErrorKey] ) {
+                            // 下载错误
+                            [imageAsset updateDownloadStatusWithDownloadResult:NO];
+                            self.downloadStatus = QMUIAssetDownloadStatusFailed;
+                            imageView.cloudDownloadStatus = QMUIAssetDownloadStatusFailed;
+                        }
+                    });
+                } withProgressHandler:phProgressHandler];
+                imageView.tag = imageAsset.requestID;
             }
         }
         
         if (isLivePhoto) {
-            imageView.tag = -1;
-            imageAsset.requestID = [imageAsset requestLivePhotoWithCompletion:^void(PHLivePhoto *livePhoto, NSDictionary *info) {
-                // 这里可能因为 imageView 复用，导致前面的请求得到的结果显示到别的 imageView 上，
-                // 因此判断如果是新请求（无复用问题）或者是当前的请求才把获得的图片结果展示出来
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    BOOL isNewRequest = (imageView.tag == -1 && imageAsset.requestID == 0);
-                    BOOL isCurrentRequest = imageView.tag == imageAsset.requestID;
-                    BOOL loadICloudImageFault = !livePhoto || info[PHImageErrorKey];
-                    if (!loadICloudImageFault && (isNewRequest || isCurrentRequest)) {
-                        // 如果是走 PhotoKit 的逻辑，那么这个 block 会被多次调用，并且第一次调用时返回的图片是一张小图，
-                        // 这时需要把图片放大到跟屏幕一样大，避免后面加载大图后图片的显示会有跳动
-                        if (@available(iOS 9.1, *)) {
-                            imageView.livePhoto = livePhoto;
-                        }
-                    }
-                    BOOL downloadSucceed = (livePhoto && !info) || (![[info objectForKey:PHLivePhotoInfoCancelledKey] boolValue] && ![info objectForKey:PHLivePhotoInfoErrorKey] && ![[info objectForKey:PHLivePhotoInfoIsDegradedKey] boolValue]);
-                    if (downloadSucceed) {
-                        // 资源资源已经在本地或下载成功
-                        [imageAsset updateDownloadStatusWithDownloadResult:YES];
-                        self.downloadStatus = QMUIAssetDownloadStatusSucceed;
-                        imageView.cloudDownloadStatus = QMUIAssetDownloadStatusSucceed;
-                    } else if ([info objectForKey:PHLivePhotoInfoErrorKey] ) {
-                        // 下载错误
-                        [imageAsset updateDownloadStatusWithDownloadResult:NO];
-                        self.downloadStatus = QMUIAssetDownloadStatusFailed;
-                        imageView.cloudDownloadStatus = QMUIAssetDownloadStatusFailed;
-                    }
-                });
-            } withProgressHandler:phProgressHandler];
-            imageView.tag = imageAsset.requestID;
         } else if (imageAsset.assetSubType == QMUIAssetSubTypeGIF) {
             [imageAsset requestImageData:^(NSData *imageData, NSDictionary<NSString *,id> *info, BOOL isGIF, BOOL isHEIC) {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{

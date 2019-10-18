@@ -58,7 +58,7 @@
     self.detailTextLabel.text = _newsModel.digest;
 
 
-    if (COM.appDelegate.isNeedImage) {
+    if ([COM getNeedImage]) {
         [self.imageView setImageWithURL:[NSURL URLWithString:_newsModel.imgsrc] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     }
     else {

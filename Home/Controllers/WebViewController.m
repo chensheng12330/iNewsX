@@ -29,7 +29,7 @@
     
     self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
     self.webView.backgroundColor = [UIColor whiteColor];
-    
+    self.webView.scrollView.showsVerticalScrollIndicator = YES;
     [self.view addSubview:self.webView];
 
     self.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -63,7 +63,7 @@
         NSString *body = allVal[@"body"];
 
 
-        if (COM.appDelegate.isNeedImage) {
+        if ([COM getNeedImage]) {
 
             NSArray *imgs = allVal[@"img"];
             for (NSDictionary *dict in imgs) {
@@ -86,11 +86,11 @@
                               <meta charset=\"utf-8\"> \
                               <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\
                               </head>\
-                              <style type=\"text/css\">body{background: rgba(0,255,0,0.03);} </style> \
+                              <style type=\"text/css\">body{background: #%@;font-size: %@px;} </style> \
                               <body> \
                               %@ \
                               </body> \
-                              </html>",body];
+                              </html>",[COM getBgColor],[COM getFontSize], body];
 
         [self.webView loadHTMLString:htmlCode baseURL:[NSURL URLWithString:self.addressURL]];
 

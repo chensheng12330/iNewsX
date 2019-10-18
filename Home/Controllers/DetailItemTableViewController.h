@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 //公众号分类列表详情
 @interface DetailItemTableViewController : UITableViewController
-@property (assign) BOOL isNeedImage;
-
 @property (nonatomic, strong) NSArray *allList;
 @property (nonatomic, strong) NSString *titleName;
 @end

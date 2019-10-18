@@ -29,6 +29,7 @@
     self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
     self.webView.navigationDelegate = self;
     self.webView.backgroundColor = [UIColor whiteColor];
+    self.webView.scrollView.showsVerticalScrollIndicator = YES;
 
     [self.view addSubview:self.webView];
 

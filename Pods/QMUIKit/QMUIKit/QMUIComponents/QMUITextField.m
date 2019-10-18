@@ -1,9 +1,16 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  QMUITextField.m
 //  qmui
 //
-//  Created by MoLice on 16-11-03
-//  Copyright (c) 2016年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 16-11-03
 //
 
 #import "QMUITextField.h"
@@ -84,7 +91,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    // 以下代码修复系统的 UITextField 在 iOS 10 下的 bug：https://github.com/QMUI/QMUI_iOS/issues/64
+    // 以下代码修复系统的 UITextField 在 iOS 10 下的 bug：https://github.com/Tencent/QMUI_iOS/issues/64
     if (@available(iOS 10.0, *)) {
         UIScrollView *scrollView = self.subviews.firstObject;
         if (![scrollView isKindOfClass:[UIScrollView class]]) {
@@ -162,7 +169,7 @@
         BOOL isDeleting = range.length > 0 && string.length <= 0;
         if (isDeleting) {
             if (NSMaxRange(range) > textField.text.length) {
-                // https://github.com/QMUI/QMUI_iOS/issues/377
+                // https://github.com/Tencent/QMUI_iOS/issues/377
                 return NO;
             } else {
                 return YES;
@@ -213,7 +220,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    // 以下代码修复系统的 UITextField 在 iOS 10 下的 bug：https://github.com/QMUI/QMUI_iOS/issues/64
+    // 以下代码修复系统的 UITextField 在 iOS 10 下的 bug：https://github.com/Tencent/QMUI_iOS/issues/64
     
     if (scrollView != self.textField.subviews.firstObject) {
         return;

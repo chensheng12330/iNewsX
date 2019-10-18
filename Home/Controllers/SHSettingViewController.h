@@ -10,7 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHSettingViewController : UIViewController
+@interface SHSettingViewController : UIViewController<UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UISwitch *swImage;
+@property (weak, nonatomic) IBOutlet UITextField *tfFontSize;
+@property (weak, nonatomic) IBOutlet UITextField *tfBgColor;
+- (IBAction)fontSizeEditingDidEnd:(UITextField *)sender;
+- (IBAction)bgColorEditingDidEnd:(UITextField *)sender;
+- (IBAction)actionEndEdit:(UITapGestureRecognizer *)sender;
 
 @end
 

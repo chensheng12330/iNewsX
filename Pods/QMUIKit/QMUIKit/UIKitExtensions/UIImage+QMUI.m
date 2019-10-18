@@ -1,15 +1,23 @@
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
 //
 //  UIImage+QMUI.m
 //  qmui
 //
-//  Created by ZhoonChen on 15/7/20.
-//  Copyright (c) 2015年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 15/7/20.
 //
 
 #import "UIImage+QMUI.h"
 #import "QMUICore.h"
 #import "UIBezierPath+QMUI.h"
 #import "UIColor+QMUI.h"
+#import "QMUILog.h"
 #import <Accelerate/Accelerate.h>
 
 CG_INLINE CGSize
@@ -22,12 +30,28 @@ CGSizeFlatSpecificScale(CGSize size, float scale) {
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        ExchangeImplementations([self class], @selector(description), @selector(qmui_description));
+        
+        ExtendImplementationOfNonVoidMethodWithoutArguments([UIImage class], @selector(description), NSString *, ^NSString *(UIImage *selfObject, NSString *originReturnValue) {
+            return ([NSString stringWithFormat:@"%@, scale = %@", originReturnValue, @(selfObject.scale)]);
+        });
+        
+        OverrideImplementation([UIImage class], @selector(resizableImageWithCapInsets:resizingMode:), ^id(__unsafe_unretained Class originClass, SEL originCMD, IMP (^originalIMPProvider)(void)) {
+            return ^UIImage *(UIImage *selfObject, UIEdgeInsets capInsets, UIImageResizingMode resizingMode) {
+                
+                if (!CGSizeIsEmpty(selfObject.size) && (UIEdgeInsetsGetHorizontalValue(capInsets) >= selfObject.size.width || UIEdgeInsetsGetVerticalValue(capInsets) >= selfObject.size.height)) {
+                    // 如果命中这个判断，请减小 capInsets 的值
+                    QMUILogWarn(@"UIImage (QMUI)", @"UIImage (QMUI) resizableImageWithCapInsets 传进来的 capInsets 的水平/垂直方向的和应该小于图片本身的大小，否则会导致 render 时出现 invalid context 0x0 的错误。");
+                }
+                
+                // call super
+                UIImage *(*originSelectorIMP)(id, SEL, UIEdgeInsets, UIImageResizingMode);
+                originSelectorIMP = (UIImage *(*)(id, SEL, UIEdgeInsets, UIImageResizingMode))originalIMPProvider();
+                UIImage *result = originSelectorIMP(selfObject, originCMD, capInsets, resizingMode);
+                
+                return result;
+            };
+        });
     });
-}
-
-- (NSString *)qmui_description {
-    return [NSString stringWithFormat:@"%@, scale = %@", [self qmui_description], @(self.scale)];
 }
 
 + (UIImage *)qmui_imageWithSize:(CGSize)size opaque:(BOOL)opaque scale:(CGFloat)scale actions:(void (^)(CGContextRef contextRef))actionBlock {
@@ -122,6 +146,12 @@ CGSizeFlatSpecificScale(CGSize size, float scale) {
 }
 
 - (UIImage *)qmui_imageWithTintColor:(UIColor *)tintColor {
+    // iOS 13 的 imageWithTintColor: 方法里并不会去更新 CGImage，所以通过它更改了图片颜色后再获取到的 CGImage 依然是旧的，因此暂不使用
+//#ifdef IOS13_SDK_ALLOWED
+//    if (@available(iOS 13.0, *)) {
+//        return [self imageWithTintColor:tintColor];
+//    }
+//#endif
     return [UIImage qmui_imageWithSize:self.size opaque:self.qmui_opaque scale:self.scale actions:^(CGContextRef contextRef) {
         CGContextTranslateCTM(contextRef, 0, self.size.height);
         CGContextScaleCTM(contextRef, 1.0, -1.0);
@@ -438,6 +468,18 @@ CGSizeFlatSpecificScale(CGSize size, float scale) {
     }
     CFRelease(cfFrameProperties);
     return frameDuration;
+}
+
++ (UIImage *)qmui_animatedImageNamed:(NSString *)name {
+    return [UIImage qmui_animatedImageNamed:name scale:1];
+}
+
++ (UIImage *)qmui_animatedImageNamed:(NSString *)name scale:(CGFloat)scale {
+    NSString *type = name.pathExtension.lowercaseString;
+    type = type.length > 0 ? type : @"gif";
+    NSString *path = [[NSBundle mainBundle] pathForResource:name.stringByDeletingPathExtension ofType:type];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    return [UIImage qmui_animatedImageWithData:data scale:scale];
 }
 
 + (UIImage *)qmui_imageWithStrokeColor:(UIColor *)strokeColor size:(CGSize)size path:(UIBezierPath *)path addClip:(BOOL)addClip {

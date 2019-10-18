@@ -1,9 +1,16 @@
-;//
+/*****
+ * Tencent is pleased to support the open source community by making QMUI_iOS available.
+ * Copyright (C) 2016-2019 THL A29 Limited, a Tencent company. All rights reserved.
+ * Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ * http://opensource.org/licenses/MIT
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ *****/
+
+//
 //  QMUIDialogViewController.m
 //  WeRead
 //
-//  Created by MoLice on 16/7/8.
-//  Copyright © 2016年 QMUI Team. All rights reserved.
+//  Created by QMUI Team on 16/7/8.
 //
 
 #import "QMUIDialogViewController.h"
@@ -128,10 +135,6 @@ static QMUIDialogViewController *dialogViewControllerAppearance;
     
     self.modalPresentationViewController = [[QMUIModalPresentationViewController alloc] init];
     self.modalPresentationViewController.modal = YES;
-}
-
-- (void)dealloc {
-    NSLog(@"");
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
@@ -361,7 +364,6 @@ EndIgnoreClangWarning
 - (QMUIButton *)generateButtonWithText:(NSString *)buttonText {
     QMUIButton *button = [[QMUIButton alloc] init];
     button.titleLabel.font = UIFontBoldMake((IS_320WIDTH_SCREEN) ? 14 : 15);
-    button.adjustsTitleTintColorAutomatically = YES;
     button.backgroundColor = self.buttonBackgroundColor;
     button.highlightedBackgroundColor = self.buttonHighlightedBackgroundColor;
     [button setAttributedTitle:[[NSAttributedString alloc] initWithString:buttonText attributes:self.buttonTitleAttributes] forState:UIControlStateNormal];
@@ -516,13 +518,13 @@ const NSInteger QMUIDialogSelectionViewControllerSelectedItemIndexNone = -1;
 }
 
 - (void)setSelectedItemIndex:(NSInteger)selectedItemIndex {
-    _selectedItemIndex = selectedItemIndex;
     [self.selectedItemIndexes removeAllObjects];
+    _selectedItemIndex = selectedItemIndex;
 }
 
 - (void)setSelectedItemIndexes:(NSMutableSet<NSNumber *> *)selectedItemIndexes {
-    _selectedItemIndexes = selectedItemIndexes;
     self.selectedItemIndex = QMUIDialogSelectionViewControllerSelectedItemIndexNone;
+    _selectedItemIndexes = selectedItemIndexes;
 }
 
 - (void)setAllowsMultipleSelection:(BOOL)allowsMultipleSelection {
@@ -890,7 +892,7 @@ static QMUIDialogTextFieldViewController *dialogTextFieldViewControllerAppearanc
 }
 
 - (NSArray<QMUILabel *> *)textFieldTitleLabels {
-    return self.mutableTextFields.copy;
+    return self.mutableTitleLabels.copy;
 }
 
 - (NSArray<QMUITextField *> *)textFields {

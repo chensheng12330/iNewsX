@@ -8,6 +8,8 @@
 
 #import "AllListTableViewController.h"
 #import "DetailItemTableViewController.h"
+#import "SHSettingViewController.h"
+
 #import "AppDelegate.h"
 #import "SHLoveHelper.h"
 
@@ -17,7 +19,6 @@
 
 @property (nonatomic, strong) NSArray *mDengTaList;
 
-@property (assign) BOOL isNeedImage;
 @end
 
 @implementation AllListTableViewController
@@ -59,8 +60,7 @@
     });
     
     
-    self.isNeedImage =  ((AppDelegate*)[UIApplication sharedApplication].delegate).isNeedImage;
-    
+
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setFrame:CGRectMake(0, 0, 80, 35)];
     //[btn setBackgroundColor:[UIColor darkGrayColor]];
@@ -69,31 +69,19 @@
     btn.layer.borderColor = [UIColor grayColor].CGColor;
     btn.layer.borderWidth = 1.0f;
     btn.layer.cornerRadius= 4.0f;
-    [btn setTitle:@"文字模式" forState:UIControlStateNormal ];
+    [btn setTitle:@"/设置/" forState:UIControlStateNormal ];
     [btn addTarget:self action:@selector(needImage:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    [self changeNeedImage:btn];
+
     return;
 }
 
 -(void)needImage:(UIButton *)sender
 {
-    self.isNeedImage = !self.isNeedImage;
-    ((AppDelegate*)[UIApplication sharedApplication].delegate).isNeedImage = self.isNeedImage;
-    
-    [self changeNeedImage:sender];
-}
+    SHSettingViewController *vc =  [[SHSettingViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 
--(void) changeNeedImage:(UIButton *)sender {
-    if(!self.isNeedImage)
-    {
-        [sender setTitle:@"文字模式" forState:UIControlStateNormal ];
-        [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    }
-    else{
-        [sender setTitle:@"图片模式" forState:UIControlStateNormal ];
-        [sender setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    }
+    return;
 }
 
 -(void) getDengTaData {
@@ -171,8 +159,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
 
     detailItemVC.titleName = info[@"cName"];
-    detailItemVC.isNeedImage = self.isNeedImage;
-    
+  
     [self.navigationController pushViewController:detailItemVC animated:YES];
 }
 
