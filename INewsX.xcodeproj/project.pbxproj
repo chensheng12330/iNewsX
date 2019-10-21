@@ -13,6 +13,8 @@
 		58A1227D1B31CFF2003C9807 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1227C1B31CFF2003C9807 /* WebViewController.m */; };
 		D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */; };
 		D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47A6B761F176EAE00A23F14 /* Images.xcassets */; };
+		D47AFA14235D857C00D750B0 /* JKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D47AFA13235D857B00D750B0 /* JKLoadingView.m */; };
+		D47AFA16235D85BD00D750B0 /* qz_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = D47AFA15235D85BD00D750B0 /* qz_loading.gif */; };
 		D4AFA43D2356A64400368605 /* SHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFA43B2356A64400368605 /* SHSettingViewController.m */; };
 		D4AFA43E2356A64400368605 /* SHSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4AFA43C2356A64400368605 /* SHSettingViewController.xib */; };
 		D4B21FD2218856920017E02B /* SHBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FC9218856920017E02B /* SHBaseRequest.m */; };
@@ -20,8 +22,6 @@
 		D4B21FD4218856920017E02B /* SHBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FCE218856920017E02B /* SHBaseNavigationController.m */; };
 		D4B21FD5218856920017E02B /* SHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FD1218856920017E02B /* SHBaseViewController.m */; };
 		D4B21FDA21885A330017E02B /* SHNewsGetApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FD921885A330017E02B /* SHNewsGetApi.m */; };
-		D4B21FE9218AF84D0017E02B /* JKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B21FE8218AF84D0017E02B /* JKLoadingView.m */; };
-		D4B21FEB218AF8960017E02B /* qz_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = D4B21FEA218AF8960017E02B /* qz_loading.gif */; };
 		D4B21FED218AFA4B0017E02B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B21FEC218AFA4B0017E02B /* WebKit.framework */; };
 		D4B70C8B22F04DDC00439B00 /* SHHomeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B70C8A22F04DDC00439B00 /* SHHomeWebViewController.m */; };
 		D4B70C8E22F04DF800439B00 /* SHDetailWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B70C8D22F04DF800439B00 /* SHDetailWebViewController.m */; };
@@ -72,6 +72,9 @@
 		D411DD271FDA8BEE00B0E0D9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		D47A6B761F176EAE00A23F14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = INewsX/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		D47AFA12235D857B00D750B0 /* JKLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLoadingView.h; sourceTree = "<group>"; };
+		D47AFA13235D857B00D750B0 /* JKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLoadingView.m; sourceTree = "<group>"; };
+		D47AFA15235D85BD00D750B0 /* qz_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = qz_loading.gif; sourceTree = "<group>"; };
 		D4AFA43A2356A64400368605 /* SHSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHSettingViewController.h; sourceTree = "<group>"; };
 		D4AFA43B2356A64400368605 /* SHSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHSettingViewController.m; sourceTree = "<group>"; };
 		D4AFA43C2356A64400368605 /* SHSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHSettingViewController.xib; sourceTree = "<group>"; };
@@ -91,9 +94,6 @@
 		D4B21FE1218983C30017E02B /* SHMacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMacroDefine.h; sourceTree = "<group>"; };
 		D4B21FE3218983C30017E02B /* URLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLString.h; sourceTree = "<group>"; };
 		D4B21FE4218985150017E02B /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
-		D4B21FE7218AF84D0017E02B /* JKLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLoadingView.h; sourceTree = "<group>"; };
-		D4B21FE8218AF84D0017E02B /* JKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLoadingView.m; sourceTree = "<group>"; };
-		D4B21FEA218AF8960017E02B /* qz_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = qz_loading.gif; path = "../../bjqr/qzzx-ios/QianZi/QianZi/Resource/OtherPIC/qz_loading.gif"; sourceTree = "<group>"; };
 		D4B21FEC218AFA4B0017E02B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D4B70C8922F04DDC00439B00 /* SHHomeWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHHomeWebViewController.h; sourceTree = "<group>"; };
 		D4B70C8A22F04DDC00439B00 /* SHHomeWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHHomeWebViewController.m; sourceTree = "<group>"; };
@@ -193,12 +193,21 @@
 		D47A6B261F17614000A23F14 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				D47AFA11235D857B00D750B0 /* LoadingView */,
 				D4DD93F82359C1640006783C /* CloudHandle */,
-				D4B21FE6218AF84D0017E02B /* LoadingView */,
 				D411DD261FDA8BEE00B0E0D9 /* Category */,
 			);
 			path = Vender;
 			sourceTree = SOURCE_ROOT;
+		};
+		D47AFA11235D857B00D750B0 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				D47AFA12235D857B00D750B0 /* JKLoadingView.h */,
+				D47AFA13235D857B00D750B0 /* JKLoadingView.m */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
 		};
 		D4B21FC6218856920017E02B /* Base */ = {
 			isa = PBXGroup;
@@ -270,16 +279,6 @@
 				D4B21FE4218985150017E02B /* Header.h */,
 			);
 			path = Define;
-			sourceTree = "<group>";
-		};
-		D4B21FE6218AF84D0017E02B /* LoadingView */ = {
-			isa = PBXGroup;
-			children = (
-				D4B21FE7218AF84D0017E02B /* JKLoadingView.h */,
-				D4B21FE8218AF84D0017E02B /* JKLoadingView.m */,
-			);
-			name = LoadingView;
-			path = "../../../bjqr/qzzx-ios/QianZi/QianZi/Utilities/LoadingView";
 			sourceTree = "<group>";
 		};
 		D4DD93F82359C1640006783C /* CloudHandle */ = {
@@ -421,8 +420,8 @@
 		F8E469ED1395812A00DB05C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D47AFA15235D85BD00D750B0 /* qz_loading.gif */,
 				D47A6B761F176EAE00A23F14 /* Images.xcassets */,
-				D4B21FEA218AF8960017E02B /* qz_loading.gif */,
 				F8FA94CD150F094D00ED4EAD /* profile-image-placeholder@2x.png */,
 			);
 			name = Images;
@@ -498,7 +497,7 @@
 				D4B70C9022F13A1800439B00 /* DengTa.json in Resources */,
 				D4AFA43E2356A64400368605 /* SHSettingViewController.xib in Resources */,
 				58A122671B31B693003C9807 /* all.txt in Resources */,
-				D4B21FEB218AF8960017E02B /* qz_loading.gif in Resources */,
+				D47AFA16235D85BD00D750B0 /* qz_loading.gif in Resources */,
 				F8FA94D1150F094D00ED4EAD /* profile-image-placeholder@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,7 +569,6 @@
 				D4B21FD2218856920017E02B /* SHBaseRequest.m in Sources */,
 				58A122651B31B27F003C9807 /* AllListTableViewController.m in Sources */,
 				F8FA9494150EF97E00ED4EAD /* SHNewsInfoModel.m in Sources */,
-				D4B21FE9218AF84D0017E02B /* JKLoadingView.m in Sources */,
 				D4DD94002359C1640006783C /* ZZRDocument.m in Sources */,
 				D4AFA43D2356A64400368605 /* SHSettingViewController.m in Sources */,
 				D4B70C8E22F04DF800439B00 /* SHDetailWebViewController.m in Sources */,
@@ -583,6 +581,7 @@
 				D4D3D104217B5E2200677D92 /* SHCommon.m in Sources */,
 				D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */,
 				58A1226A1B31BCB2003C9807 /* DetailItemTableViewController.m in Sources */,
+				D47AFA14235D857C00D750B0 /* JKLoadingView.m in Sources */,
 				F8FA949A150EF9DA00ED4EAD /* GlobalTimelineViewController.m in Sources */,
 				F8FA94C1150F019100ED4EAD /* PostTableViewCell.m in Sources */,
 				D4B70C8B22F04DDC00439B00 /* SHHomeWebViewController.m in Sources */,
