@@ -46,14 +46,12 @@
     NSUbiquitousKeyValueStore *keyValueStore = [NSUbiquitousKeyValueStore defaultStore];
     [keyValueStore synchronize];
 
-    [QMUITips showSucceed:@"配置数据已存储."];
-
-    //[QMUITips showSucceed:@"配置数据已存储."];
 
     [COM.mLoveHelper synchronousWithCompletionHandler:^(NSInteger code) {
 
         if(code == 0){
             [QMUITips showSucceed:@"数据同步成功."];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotiSyschronLoverInfo object:nil];
         }
         else if(code == 1){
             [QMUITips showSucceed:@"数据同步失败."];

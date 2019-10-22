@@ -21,8 +21,8 @@ typedef NS_ENUM(NSInteger, Document_type)
 @interface SHLoveHelper ()
 @property(nonatomic, copy) NSString *strFilePath;
 
-@property(nonatomic, copy) NSData *mCloudData; //远程数据
-@property(nonatomic, copy) NSData *mLocalData;//本地数据
+@property(nonatomic, strong) NSData *mCloudData; //远程数据
+@property(nonatomic, strong) NSData *mLocalData;//本地数据
 @property(nonatomic, copy) void (^completionHandler)(NSInteger code);
 @end
 
@@ -41,12 +41,12 @@ typedef NS_ENUM(NSInteger, Document_type)
         NSString *lovePath = [docDir stringByAppendingPathComponent:@"myLove.dat"];
         self.strFilePath = lovePath;
 
-        //self.arLoverList = [[NSMutableArray alloc] initWithContentsOfFile:lovePath];
-
         NSData *locData = [NSData dataWithContentsOfFile:lovePath];
-
         if(locData){
-            self.arLoverList = [NSJSONSerialization JSONObjectWithData:locData options:0 error:nil];
+            NSArray *tempLocAry = [NSJSONSerialization JSONObjectWithData:locData options:0 error:nil];
+            if(tempLocAry.count>0){
+                self.arLoverList = [[NSMutableArray alloc] initWithArray:tempLocAry];
+            }
         }
 
         if(self.arLoverList==NULL) { self.arLoverList = [NSMutableArray new];}
@@ -75,6 +75,7 @@ typedef NS_ENUM(NSInteger, Document_type)
     }];
 
     if (isSave ==YES) {
+        //[QMUITips showError:@"已存在"];
         return NO;
     }
 
@@ -84,17 +85,15 @@ typedef NS_ENUM(NSInteger, Document_type)
     mcInfo[@"cid"] = SH_MyLoveCatFlag;
     
     [self.arLoverList addObject:mcInfo];
-
-    //通知刷新
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"addLoverInfo" object:nil];
-
-
     NSData *saveData = [NSJSONSerialization dataWithJSONObject:self.arLoverList options:0 error:nil];
 
     //存入本地数据
     if(saveData){
         [saveData writeToFile:self.strFilePath atomically:YES];
     }
+
+    //通知刷新
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotiAddLoverInfo object:nil];
 
     return YES;
 }
@@ -121,12 +120,15 @@ typedef NS_ENUM(NSInteger, Document_type)
     ///
     [self.arLoverList removeObjectAtIndex:inRow];
 
+    NSData *saveData = [NSJSONSerialization dataWithJSONObject:self.arLoverList options:0 error:nil];
 
     //存入本地数据
-    [self.arLoverList writeToFile:self.strFilePath atomically:YES];
+    if(saveData){
+        [saveData writeToFile:self.strFilePath atomically:YES];
+    }
 
     //通知刷新
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"removeLoverInfo" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotiRemoveLoverInfo object:nil];
 
     return YES;
 }
@@ -200,6 +202,8 @@ typedef NS_ENUM(NSInteger, Document_type)
         [self.mCloudData writeToFile:self.strFilePath atomically:YES];
 
         self.arLoverList = [NSJSONSerialization JSONObjectWithData:self.mCloudData options:0 error:nil];
+        self.completionHandler(0);
+        return;
     }
 
     //远程为空

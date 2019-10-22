@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 #define kBgColor  (@"BgColor")
 #define kImageSwitch (@"ImageSwitch")
 
+#define kNotiSyschronLoverInfo (@"syschronLoverInfo")
+#define kNotiRemoveLoverInfo (@"removeLoverInfo")
+#define kNotiAddLoverInfo    (@"addLoverInfo")
 
 @interface SHCommon : NSObject
 

@@ -73,7 +73,16 @@
     [btn addTarget:self action:@selector(needImage:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:kNotiAddLoverInfo object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:kNotiSyschronLoverInfo object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:kNotiRemoveLoverInfo object:nil];
     return;
+}
+
+-(void) refreshData {
+    [self.tableView reloadData];
 }
 
 -(void)needImage:(UIButton *)sender
@@ -91,6 +100,7 @@
     self.mDengTaList = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     return ;
 }
+
 
 #pragma mark - UITableViewDataSource
 

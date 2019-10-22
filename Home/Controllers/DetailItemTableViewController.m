@@ -53,18 +53,27 @@
     //NSLog(@"add %d",sender);
     NSDictionary *info = self.allList[sender.tag];
     if([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]){
-        [COM.mLoveHelper removeLoverInfo:info];
 
-        [QMUITips showWithText:@"删除成功" inView:self.view hideAfterDelay:1.5];
+        if([COM.mLoveHelper removeLoverInfo:info])
+        {
+            [QMUITips showWithText:@"删除成功" inView:self.view hideAfterDelay:0.5];
+        }
+        else {
+            [QMUITips showError:@"删除失败"];
+        }
 
         [self.tableView reloadData];
     }
     else {
 
-        [COM.mLoveHelper addLoverInfo:info];
-        [QMUITips showWithText:@"添加成功" inView:self.view hideAfterDelay:1.5];
+        if([COM.mLoveHelper addLoverInfo:info])
+        {
+            [QMUITips showWithText:@"添加成功" inView:self.view hideAfterDelay:0.5];
+        }
+        else {
+            [QMUITips showError:@"添加失败"];
+        }
     }
-
     return;
 }
 
