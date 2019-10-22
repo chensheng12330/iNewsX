@@ -27,16 +27,6 @@
     [self loadKetValueICloudStore];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - key-value storage
 
 - (IBAction)SwitchValueChanged:(UISwitch *)sender {
@@ -44,12 +34,39 @@
 }
 
 //! 数据同步
+
+/*
+0: 成功
+1: 失败
+2: 无同步数据
+3: 上传iclound失败
+*/
 - (IBAction)action4DataSys:(UIButton *)sender {
 
     NSUbiquitousKeyValueStore *keyValueStore = [NSUbiquitousKeyValueStore defaultStore];
     [keyValueStore synchronize];
 
-    [QMUITips showSucceed:@"数据已存储."];
+    [QMUITips showSucceed:@"配置数据已存储."];
+
+    //[QMUITips showSucceed:@"配置数据已存储."];
+
+    [COM.mLoveHelper synchronousWithCompletionHandler:^(NSInteger code) {
+
+        if(code == 0){
+            [QMUITips showSucceed:@"数据同步成功."];
+        }
+        else if(code == 1){
+            [QMUITips showSucceed:@"数据同步失败."];
+        }
+        else if(code == 2){
+            [QMUITips showSucceed:@"无可用同步数据."];
+        }
+        else if(code == 3){
+            [QMUITips showSucceed:@"上传iClound失败."];
+        }
+        //NSLog(@"返回值：%ld",code);
+    }];
+
 
     /*
 
@@ -64,36 +81,28 @@
     self.swImage.on = [COM getNeedImage];
     self.tfFontSize.text = [COM getFontSize];
     self.tfBgColor.text = [COM getBgColor];
+
+    [self showTextEfec];
     return;
+}
 
-    /*
-    NSString *f1 =  [iCloudHandle getKeyValueICloudStoreWithKey:kImageSwitch];
-    NSString *f2 =  [iCloudHandle getKeyValueICloudStoreWithKey:kFontSize];
-    NSString *f3 =  [iCloudHandle getKeyValueICloudStoreWithKey:kBgColor];
-
-    if(f1){
-        self.swImage.on = [f1 isEqualToString:@"1"]?YES:NO;
-    }
-
-    if(f2){
-        self.tfFontSize.text = f2;
-    }
-
-    if(f3){
-        self.tfBgColor.text = f3;
-    }
-     */
-
+-(void) showTextEfec {
+    self.lbShowText.text = [NSString stringWithFormat:@"效果示例文字:   字体[%@pt] - 颜色[%@]",self.tfFontSize.text,self.tfBgColor.text];
+    [self.lbShowText setBackgroundColor:[UIColor qmui_colorWithHexString:self.tfBgColor.text]];
+    [self.lbShowText setFont:[UIFont systemFontOfSize:[self.tfFontSize.text floatValue] ]];
     return;
-
 }
 
 - (IBAction)fontSizeEditingDidEnd:(UITextField *)sender {
-     [iCloudHandle setUpKeyValueICloudStoreWithKey:kFontSize value:sender.text];
+    [iCloudHandle setUpKeyValueICloudStoreWithKey:kFontSize value:sender.text];
+
+    [self showTextEfec];
 }
 
 - (IBAction)bgColorEditingDidEnd:(UITextField *)sender {
     [iCloudHandle setUpKeyValueICloudStoreWithKey:kBgColor value:sender.text];
+
+    [self showTextEfec];
 }
 
 - (IBAction)actionEndEdit:(UITapGestureRecognizer *)sender {

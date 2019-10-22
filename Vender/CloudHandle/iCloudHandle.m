@@ -54,15 +54,18 @@
 
 
 //创建文档
-+ (void)createDocumentWithFileName:(NSString *)fileName content:(NSString *)content
++ (void)createDocumentWithFileName:(NSString *)fileName
+                           content:(NSData *)content
+                 completionHandler:(void (^ __nullable)(BOOL success))completionHandler
 {
     NSURL *url = [iCloudHandle getUbiquityContauneURLWithFileName:fileName];
     ZZRDocument *doc = [[ZZRDocument alloc] initWithFileURL:url];
     
-    NSString *docContent = content;
-    doc.myData = [docContent dataUsingEncoding:NSUTF8StringEncoding];
+    //NSString *docContent = content;
+    doc.myData = content;//[docContent dataUsingEncoding:NSUTF8StringEncoding];
     [doc saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-       
+
+        completionHandler(success);
         if(success)
         {
             NSLog(@"创建文档成功");
@@ -76,14 +79,17 @@
 
 
 //修改文档 实际上是overwrite重写
-+ (void)overwriteDocumentWithFileName:(NSString *)fileName content:(NSString *)content;
++ (void)overwriteDocumentWithFileName:(NSString *)fileName
+                              content:(NSData *)content
+                    completionHandler:(void (^ __nullable)(BOOL success))completionHandler
 {
     NSURL *url = [iCloudHandle getUbiquityContauneURLWithFileName:fileName];
     ZZRDocument *doc = [[ZZRDocument alloc] initWithFileURL:url];
     
-    doc.myData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    doc.myData = content;//[content dataUsingEncoding:NSUTF8StringEncoding];
     [doc saveToURL:url forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        
+
+        completionHandler(success);
         if(success)
         {
             NSLog(@"修改文档成功");

@@ -29,6 +29,15 @@ NS_ASSUME_NONNULL_BEGIN
 // 管理喜好列表
 -(BOOL) addLoverInfo:(NSDictionary*) info;
 -(BOOL) removeLoverInfo:(NSDictionary*) info;
+
+/*
+ 0: 成功
+ 1: 失败
+ 2: 无同步数据
+ 3: 上传iclound失败
+ 4: 
+ */
+-(void) synchronousWithCompletionHandler:(void (^ __nullable)(NSInteger code))completionHandler;
 @end
 
 NS_ASSUME_NONNULL_END

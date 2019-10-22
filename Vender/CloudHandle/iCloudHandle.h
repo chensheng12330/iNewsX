@@ -23,9 +23,13 @@
 //获取地址
 + (NSURL *)getUbiquityContauneURLWithFileName:(NSString *)fileName;
 //创建文档
-+ (void)createDocumentWithFileName:(NSString *)fileName content:(NSString *)content;
++ (void)createDocumentWithFileName:(NSString *)fileName
+                           content:(NSData *)content
+                 completionHandler:(void (^ __nullable)(BOOL success))completionHandler;
 //修改文档 实际上是overwrite重写
-+ (void)overwriteDocumentWithFileName:(NSString *)fileName content:(NSString *)content;
++ (void)overwriteDocumentWithFileName:(NSString *)fileName
+                              content:(NSData *)content
+                    completionHandler:(void (^ __nullable)(BOOL success))completionHandler;
 //删除文档
 + (void)removeDocumentWithFileName:(NSString *)fileName;
 //获取最新的数据
