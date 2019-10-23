@@ -13,7 +13,7 @@
 		58A1227D1B31CFF2003C9807 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A1227C1B31CFF2003C9807 /* WebViewController.m */; };
 		D411DD291FDA8BEE00B0E0D9 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */; };
 		D47550B3235EF858008489F6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47550B2235EF858008489F6 /* Launch Screen.storyboard */; };
-		D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47A6B761F176EAE00A23F14 /* Images.xcassets */; };
+		D47A6B771F176EAE00A23F14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47A6B761F176EAE00A23F14 /* Assets.xcassets */; };
 		D47AFA14235D857C00D750B0 /* JKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D47AFA13235D857B00D750B0 /* JKLoadingView.m */; };
 		D47AFA16235D85BD00D750B0 /* qz_loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = D47AFA15235D85BD00D750B0 /* qz_loading.gif */; };
 		D4AFA43D2356A64400368605 /* SHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AFA43B2356A64400368605 /* SHSettingViewController.m */; };
@@ -73,7 +73,7 @@
 		D411DD271FDA8BEE00B0E0D9 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		D411DD281FDA8BEE00B0E0D9 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		D47550B2235EF858008489F6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		D47A6B761F176EAE00A23F14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = INewsX/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		D47A6B761F176EAE00A23F14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = INewsX/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		D47AFA12235D857B00D750B0 /* JKLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLoadingView.h; sourceTree = "<group>"; };
 		D47AFA13235D857B00D750B0 /* JKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLoadingView.m; sourceTree = "<group>"; };
 		D47AFA15235D85BD00D750B0 /* qz_loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = qz_loading.gif; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		F8129C7215910C37009BFE23 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		F8129C7315910C37009BFE23 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		F8DA09E31396AC040057D0CC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
-		F8E469601395739C00DB05C8 /* INewsX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = INewsX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8E469601395739C00DB05C8 /* 聚阅读.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "聚阅读.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8E469641395739D00DB05C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F8E469661395739D00DB05C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8E469681395739D00DB05C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -361,7 +361,7 @@
 		F8E469611395739C00DB05C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F8E469601395739C00DB05C8 /* INewsX.app */,
+				F8E469601395739C00DB05C8 /* 聚阅读.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				D47AFA15235D85BD00D750B0 /* qz_loading.gif */,
-				D47A6B761F176EAE00A23F14 /* Images.xcassets */,
+				D47A6B761F176EAE00A23F14 /* Assets.xcassets */,
 				F8FA94CD150F094D00ED4EAD /* profile-image-placeholder@2x.png */,
 			);
 			name = Images;
@@ -450,7 +450,7 @@
 			);
 			name = INewsX;
 			productName = AFNetworkingExample;
-			productReference = F8E469601395739C00DB05C8 /* INewsX.app */;
+			productReference = F8E469601395739C00DB05C8 /* 聚阅读.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -459,7 +459,7 @@
 		F8E469571395739C00DB05C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = Sherwin.Chen;
 				TargetAttributes = {
 					F8E4695F1395739C00DB05C8 = {
@@ -475,11 +475,11 @@
 			};
 			buildConfigurationList = F8E4695A1395739C00DB05C8 /* Build configuration list for PBXProject "INewsX" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = F8E469551395739C00DB05C8;
 			productRefGroup = F8E469611395739C00DB05C8 /* Products */;
@@ -496,7 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47A6B771F176EAE00A23F14 /* Images.xcassets in Resources */,
+				D47A6B771F176EAE00A23F14 /* Assets.xcassets in Resources */,
 				D4B70C9022F13A1800439B00 /* DengTa.json in Resources */,
 				D4AFA43E2356A64400368605 /* SHSettingViewController.xib in Resources */,
 				58A122671B31B693003C9807 /* all.txt in Resources */,
@@ -602,6 +602,7 @@
 		F8E4697F1395739D00DB05C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -620,6 +621,7 @@
 		F8E469801395739D00DB05C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -656,7 +658,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = INewsX/INewsX.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
@@ -688,9 +690,9 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "聚阅读";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WARNING_CFLAGS = "-Wunreachable-code";
@@ -723,7 +725,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = INewsX/INewsX.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
@@ -754,9 +756,9 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "iOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "聚阅读";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALIDATE_PRODUCT = YES;
