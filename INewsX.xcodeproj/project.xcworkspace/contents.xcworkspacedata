@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Volumes/Data/MMT/iNewsX/INewsX.xcodeproj">
+      location = "self:INewsX.xcodeproj">
    </FileRef>
 </Workspace>

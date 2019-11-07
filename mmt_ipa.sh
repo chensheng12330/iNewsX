@@ -192,7 +192,7 @@ if [ -n "$1" ] ;then
   RESULT=$(curl -F "file=@${IPA_PATH}" -F "_api_key=$pgyerApiKey" -F "publishRange=2" https://www.pgyer.com/apiv2/app/upload)
 
   echo '---🍏🍎🍐🍊🍋🍌🍉🍇🍓🍈🍒🍑🥭🍍🥥---'
-  echo "(0x0B) 完成操作,结果如下[👉 https://www.pgyer.com/MMTWallet 👈]:"
+  echo "(0x0B) 完成操作,结果如下[👉 https://www.pgyer.com/dzEB 👈]:"
   echo '----------------------------------------------------'
   echo ''
   echo $RESULT
