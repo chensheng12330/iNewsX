@@ -21,7 +21,7 @@ didFinishLaunchingWithOptions:(__unused NSDictionary *)launchOptions
 
     [self netWorkConfiguration];
 
-    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     UITableViewController *viewController = [[AllListTableViewController alloc] initWithStyle:UITableViewStylePlain];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];

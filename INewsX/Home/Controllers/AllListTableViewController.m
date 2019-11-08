@@ -27,7 +27,8 @@
     [super viewDidLoad];
     
     self.title = @"分类";
-    
+
+    return ;
     /*
     NSData *data1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://c.m.163.com/nc/topicset/ios/v4/subscribe/read/all.html"]];
     

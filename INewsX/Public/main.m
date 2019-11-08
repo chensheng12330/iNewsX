@@ -19,19 +19,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED
-  #import <UIKit/UIKit.h>
 
-  int main(int argc, char *argv[]) {
-      @autoreleasepool {
-          int retVal = UIApplicationMain(argc, argv, @"UIApplication", @"AppDelegate");
-          return retVal;
-      }
-  }
-#else
-  #import <Cocoa/Cocoa.h>
+#import <UIKit/UIKit.h>
 
-  int main(int argc, char *argv[]) {
-      return NSApplicationMain(argc, (const char **)argv);
+int main(int argc, char *argv[]) {
+  @autoreleasepool {
+      int retVal = UIApplicationMain(argc, argv, @"UIApplication", @"AppDelegate");
+      return retVal;
   }
-#endif
+}
