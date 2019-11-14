@@ -43,6 +43,40 @@
 
     [self loadHtmlData];
 
+    //设置返回主页按钮
+    //UINavigationItem
+
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setFrame:CGRectMake(0, 0, 35, 35)];
+    //[btn setBackgroundColor:[UIColor darkGrayColor]];
+    [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+    btn.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    btn.layer.borderWidth = 1.0f;
+    btn.layer.cornerRadius= 4.0f;
+    [btn setTitle:@"👈" forState:UIControlStateNormal ];
+    [btn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+
+    UIButton * btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn2 setFrame:CGRectMake(0, 0, 35, 35)];
+    //[btn setBackgroundColor:[UIColor darkGrayColor]];
+    [btn2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [btn2.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
+    btn2.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    btn2.layer.borderWidth = 1.0f;
+    btn2.layer.cornerRadius= 4.0f;
+    [btn2 setTitle:@"👉" forState:UIControlStateNormal ];
+    [btn2 addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
+
+    UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc] initWithCustomView:btn];
+
+     UIBarButtonItem *barButtonItem2 = [[UIBarButtonItem alloc] initWithCustomView:btn2];
+
+    self.navigationItem.rightBarButtonItems =@[barButtonItem2,barButtonItem1];
+
+    //setRightBarButtonItems
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+
     return;
 }
 
@@ -57,6 +91,14 @@
     return;
 }
 
+-(void)goBack:(UIButton*) sender {
+    [self.webView goBack];
+}
+
+-(void)goForward:(UIButton*) sender {
+    [self.webView goForward];
+}
+
 - (void)webView:(WKWebView *)webView
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
@@ -65,7 +107,8 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     //NSString *scheme    = url.scheme;
     NSString *urlString = url.absoluteString;
 
-    if([urlString isEqualToString:self.webUrlStr]){
+    if([urlString isEqualToString:self.webUrlStr] ||
+       [urlString containsString:@"/page/"]){
         decisionHandler(WKNavigationActionPolicyAllow);
     }
     else {
@@ -87,6 +130,7 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
 
+    //[self change2WhiteBackGround];
     [self.loadingView dissmiss];
     return;
 }
@@ -94,8 +138,8 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
 
+    [self change2WhiteBackGround];
     [self.loadingView dissmiss];
-
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
@@ -114,5 +158,12 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 /// 处理页面白屏
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
     [self loadHtmlData];
+}
+
+-(void) change2WhiteBackGround {
+    [self.webView evaluateJavaScript:@"document.body.style.backgroundColor='#ffffff';" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+        NSLog(@"%@",error);
+
+    }];
 }
 @end

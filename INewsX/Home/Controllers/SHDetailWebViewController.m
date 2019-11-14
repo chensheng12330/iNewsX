@@ -33,7 +33,7 @@
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.navigationDelegate = self;
     self.webView.scrollView.showsVerticalScrollIndicator = YES;
-    self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleDefault;
+    self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     [self.view addSubview:self.webView];
 
     self.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -62,10 +62,13 @@
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation {
     [self.loadingView show];
+
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
 
+    //[self change2WhiteBackGround];
+    // NSLog(@"----> didCommitNavigation %@ ",navigation);
     [self.loadingView dissmiss];
     return;
 }
@@ -73,6 +76,8 @@
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
 
+    [self change2WhiteBackGround];
+    // NSLog(@"----> didFinishNavigation %@ ",navigation);
     [self.loadingView dissmiss];
 
 }
@@ -95,4 +100,10 @@
     [self loadHtmlData];
 }
 
+-(void) change2WhiteBackGround {
+    [self.webView evaluateJavaScript:@"document.body.style.backgroundColor='#ffffff';" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+        NSLog(@"%@",error);
+
+    }];
+}
 @end

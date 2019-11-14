@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"分类";
+    self.title = @"聚阅读";
 
     /*
     NSData *data1 = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://c.m.163.com/nc/topicset/ios/v4/subscribe/read/all.html"]];
@@ -62,14 +62,14 @@
     
 
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setFrame:CGRectMake(0, 0, 80, 35)];
+    [btn setFrame:CGRectMake(0, 0, 65, 35)];
     //[btn setBackgroundColor:[UIColor darkGrayColor]];
     [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
-    btn.layer.borderColor = [UIColor grayColor].CGColor;
+    btn.layer.borderColor = [UIColor darkGrayColor].CGColor;
     btn.layer.borderWidth = 1.0f;
     btn.layer.cornerRadius= 4.0f;
-    [btn setTitle:@"/设置/" forState:UIControlStateNormal ];
+    [btn setTitle:@">设置<" forState:UIControlStateNormal ];
     [btn addTarget:self action:@selector(needImage:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 
