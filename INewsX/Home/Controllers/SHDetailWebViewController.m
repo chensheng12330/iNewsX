@@ -16,8 +16,6 @@
 
 @property (nonatomic, strong) WKWebView *webView;
 
-@property (nonatomic, strong) NSString *addressURL;
-
 @property(nonatomic, strong) JKLoadingView *loadingView;
 @end
 
@@ -45,6 +43,12 @@
 
 
     [self loadHtmlData];
+
+
+    UIBarButtonItem *sysBarItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(open4Safari)];
+    sysBarItem1.tintColor = [UIColor systemBlueColor];
+
+    self.navigationItem.rightBarButtonItem = sysBarItem1;
 
     return;
 }
@@ -105,5 +109,13 @@
         NSLog(@"%@",error);
 
     }];
+}
+
+- (void) open4Safari {
+
+    //获取当前Url
+    //用safari打开.
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.webUrlStr]];
 }
 @end

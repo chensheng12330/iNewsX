@@ -49,33 +49,49 @@
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setFrame:CGRectMake(0, 0, 35, 35)];
     //[btn setBackgroundColor:[UIColor darkGrayColor]];
+    /*
     [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
     btn.layer.borderColor = [UIColor darkGrayColor].CGColor;
     btn.layer.borderWidth = 1.0f;
     btn.layer.cornerRadius= 4.0f;
-    [btn setTitle:@"👈" forState:UIControlStateNormal ];
+     */
+
+    //🔙🔜←→⇤⇥⇠⇢  👈⎈⌘⚙︎
+    [btn setTitle:@"🔙" forState:UIControlStateNormal ];
     [btn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
 
     UIButton * btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn2 setFrame:CGRectMake(0, 0, 35, 35)];
+    /*
     //[btn setBackgroundColor:[UIColor darkGrayColor]];
     [btn2 setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [btn2.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
     btn2.layer.borderColor = [UIColor darkGrayColor].CGColor;
     btn2.layer.borderWidth = 1.0f;
-    btn2.layer.cornerRadius= 4.0f;
-    [btn2 setTitle:@"👉" forState:UIControlStateNormal ];
+    btn2.layer.cornerRadius= 4.0f; 👉
+     */
+    [btn2 setTitle:@"🔜" forState:UIControlStateNormal ];
+    [btn2 setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
+    //[btn2 setTintColor:[UIColor systemBlueColor]];
     [btn2 addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
 
     UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc] initWithCustomView:btn];
 
      UIBarButtonItem *barButtonItem2 = [[UIBarButtonItem alloc] initWithCustomView:btn2];
 
-    self.navigationItem.rightBarButtonItems =@[barButtonItem2,barButtonItem1];
 
-    //setRightBarButtonItems
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+/*
+    UIBarButtonItem *sysBarItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(goBack:)];
+    sysBarItem1.tintColor = [UIColor systemBlueColor];
+
+    UIBarButtonItem *sysBarItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(goForward:)];
+    sysBarItem2.tintColor = [UIColor systemBlueColor];
+
+    UIBarButtonItem *spaceBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceBarItem.width = -40;
+*/
+    self.navigationItem.rightBarButtonItems =@[barButtonItem2,barButtonItem1];
 
     return;
 }

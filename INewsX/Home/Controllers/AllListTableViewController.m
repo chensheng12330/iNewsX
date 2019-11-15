@@ -62,14 +62,16 @@
     
 
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setFrame:CGRectMake(0, 0, 65, 35)];
+    [btn setFrame:CGRectMake(0, 0, 36, 36)];
     //[btn setBackgroundColor:[UIColor darkGrayColor]];
-    [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [btn.titleLabel setFont:[UIFont systemFontOfSize:15.f]];
-    btn.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    btn.layer.borderWidth = 1.0f;
-    btn.layer.cornerRadius= 4.0f;
-    [btn setTitle:@">设置<" forState:UIControlStateNormal ];
+    //[btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont systemFontOfSize:20.f]];
+    btn.layer.borderColor = [UIColor systemBlueColor].CGColor;
+    btn.layer.borderWidth = 0.5f;
+    btn.layer.cornerRadius= 36/2.0f;
+    [btn setShowsTouchWhenHighlighted:YES];
+    [btn setTitle:@"⚙︎" forState:UIControlStateNormal ];
+    [btn setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(needImage:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 

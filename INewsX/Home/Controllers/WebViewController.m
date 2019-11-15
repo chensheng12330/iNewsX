@@ -9,6 +9,7 @@
 #import "WebViewController.h"
 #import "SHNewsGetApi.h"
 #import "JKLoadingView.h"
+#import "JSONHTTPClient.h"
 
 #import <WebKit/WKWebView.h>
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) NSString *addressURL;
 
 @property(nonatomic, strong) JKLoadingView *mLoadingView;
+
+//@property(nonatomic, copy) NSString *webTitle;
 @end
 
 @implementation WebViewController
@@ -42,6 +45,10 @@
 
     [self loadHtmlData];
 
+    UIBarButtonItem *sysBarItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(open4Safari)];
+    sysBarItem1.tintColor = [UIColor systemBlueColor];
+
+    self.navigationItem.rightBarButtonItem = sysBarItem1;
     return;
 }
 
@@ -110,6 +117,20 @@
 
     }];
 
+}
+//http://sunny90.com/ios/rss/full.php?docid=EU1L0GB705118O8G&title=长城欧拉电池技术解读
+
+- (void) open4Safari {
+
+    //获取当前Url
+    //用safari打开.
+
+    NSString *rssAdd = @"http://sunny90.com/ios/rss/full.php";
+    NSString *url = [NSString stringWithFormat:@"%@?docid=%@&title=%@",rssAdd,self.docid,self.title];
+
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
 @end
