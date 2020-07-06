@@ -85,3 +85,32 @@
 }
 
 @end
+
+
+@interface SHGetWebPageApi ()
+
+@property(nonatomic, copy)   NSString *mURL;
+
+@end
+
+@implementation  SHGetWebPageApi
+
+- (instancetype)initWithURL:(NSString*) strURL  {
+
+    if (self = [super init])
+    {
+
+        self.mURL = strURL;
+    }
+    return self;
+}
+
+- (NSString *)requestUrl {
+    return self.mURL;
+}
+
+- (YTKRequestMethod)requestMethod {
+    return YTKRequestMethodGET;
+}
+
+@end

@@ -6,10 +6,24 @@
 //  Copyright © 2019 Sherwin.Chen. All rights reserved.
 //
 
+/** 优化页面加载速度
+ 1.启动网络线程加载 url页面资源
+ 2.将所有 https://ressrc.com/ 替换成 ios://
+ 3.处理所有请求，只对
+
+ a. https://ressrc.com/wp-content/plugins/simple-lightbox/client/css/app.css?ver=2.7.1
+ b.https://ressrc.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp
+ c.https://ressrc.com/wp-content/themes/twentysixteen/style.css?ver=5.2.6
+ d.
+ */
+
 #import <WebKit/WebKit.h>
 #import "SHHomeWebViewController.h"
 #import "SHDetailWebViewController.h"
 #import "JKLoadingView.h"
+#import "SHBasePlugin.h"
+#import "CustomURLSchemeHandler.h"
+#import <AFNetworking.h>
 
 @interface SHHomeWebViewController ()<WKNavigationDelegate>
 
@@ -26,7 +40,22 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
+
+
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+
+    configuration.preferences =  [[WKPreferences alloc] init];
+    configuration.preferences = [[WKPreferences alloc] init];
+    configuration.preferences.minimumFontSize = 10;
+    configuration.preferences.javaScriptEnabled = YES; //是否支持 JavaScript
+    configuration.preferences.javaScriptCanOpenWindowsAutomatically = YES;
+    configuration.processPool = [[WKProcessPool alloc] init];
+    configuration.allowsInlineMediaPlayback = YES;        // 允许在线播放
+    configuration.allowsAirPlayForMediaPlayback = YES;  //允许视频播放
+    //[configuration setURLSchemeHandler:[CustomURLSchemeHandler new] forURLScheme: @"ioss"];
+
+
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
     self.webView.navigationDelegate = self;
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scrollView.showsVerticalScrollIndicator = YES;
@@ -58,7 +87,7 @@
      */
 
     //🔙🔜←→⇤⇥⇠⇢  👈⎈⌘⚙︎
-    [btn setTitle:@"🔙" forState:UIControlStateNormal ];
+    [btn setTitle:@"←" forState:UIControlStateNormal ];
     [btn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
 
     UIButton * btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -71,7 +100,7 @@
     btn2.layer.borderWidth = 1.0f;
     btn2.layer.cornerRadius= 4.0f; 👉
      */
-    [btn2 setTitle:@"🔜" forState:UIControlStateNormal ];
+    [btn2 setTitle:@"→" forState:UIControlStateNormal ];
     [btn2 setTitleColor:[UIColor systemBlueColor] forState:UIControlStateNormal];
     //[btn2 setTintColor:[UIColor systemBlueColor]];
     [btn2 addTarget:self action:@selector(goForward:) forControlEvents:UIControlEventTouchUpInside];
@@ -94,6 +123,45 @@
     self.navigationItem.rightBarButtonItems =@[barButtonItem2,barButtonItem1];
 
     return;
+}
+
+- (void)dealloc
+{
+
+}
+
+
+- (void) loadHtmlData2 {
+
+    //NSURLSessionTask sess
+
+
+    AFHTTPSessionManager *httpManager = [AFHTTPSessionManager manager];
+
+    httpManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    httpManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSURLSessionDataTask *task = [httpManager  GET:self.webUrlStr parameters:nil progress:^(NSProgress * downloadProgress) {
+    } success:^(NSURLSessionDataTask * task, NSData* responseObject) {
+
+        NSString *dataStr = [[NSString alloc] initWithData:responseObject encoding:4];
+        //NSLog(@"%@",dataStr);
+
+        NSString *clearWebStr = [self flitterWebConter:dataStr];
+        [self.webView loadHTMLString:clearWebStr
+                             baseURL:[NSURL URLWithString:@"https://ressrc.com"]];
+
+    } failure:^(NSURLSessionDataTask * task, NSError * error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+/**数据过滤*/
+- (NSString*) flitterWebConter:(NSString*)webStr {
+
+    webStr = [webStr stringByReplacingOccurrencesOfString:@"https://ressrc.com/" withString:@"ioss://"];
+
+    NSLog(@"%@",webStr);
+    return webStr;
 }
 
 -(void) loadHtmlData {
@@ -177,7 +245,7 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 }
 
 -(void) change2WhiteBackGround {
-    [self.webView evaluateJavaScript:@"document.body.style.backgroundColor='#ffffff';" completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+    [self.webView evaluateJavaScript:@"document.body.style.backgroundColor='#ffffff';" completionHandler:^(id obj, NSError * _Nullable error) {
         NSLog(@"%@",error);
 
     }];

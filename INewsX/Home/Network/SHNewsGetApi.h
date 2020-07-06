@@ -23,3 +23,6 @@
 - (instancetype)initWithDocid:(NSString*) docid ;
 
 @end
+
+@interface SHGetWebPageApi : SHBaseRequest
+@end

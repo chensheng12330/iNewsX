@@ -38,6 +38,12 @@
 		D47E3A26236050F60072AAF1 /* ZZRDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E3A00236050F50072AAF1 /* ZZRDocument.m */; };
 		D47E3A27236050F60072AAF1 /* ZZRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E3A02236050F50072AAF1 /* ZZRModel.m */; };
 		D47E3A28236050F60072AAF1 /* JKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E3A05236050F50072AAF1 /* JKLoadingView.m */; };
+		D47E665F24A0A42E004F16B6 /* CustomURLSchemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E665A24A0A42E004F16B6 /* CustomURLSchemeHandler.m */; };
+		D47E666024A0A42E004F16B6 /* NSDictionary+JSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E665C24A0A42E004F16B6 /* NSDictionary+JSONString.m */; };
+		D47E666124A0A42E004F16B6 /* SHBasePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E665E24A0A42E004F16B6 /* SHBasePlugin.m */; };
+		D47E666524A0D0C0004F16B6 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = D47E666224A0D0C0004F16B6 /* style.css */; };
+		D47E666624A0D0C0004F16B6 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = D47E666324A0D0C0004F16B6 /* app.css */; };
+		D47E666724A0D0C0004F16B6 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = D47E666424A0D0C0004F16B6 /* jquery.js */; };
 		D4B21FED218AFA4B0017E02B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B21FEC218AFA4B0017E02B /* WebKit.framework */; };
 		D4D3D276217C2C7600677D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D275217C2C7600677D92 /* QuartzCore.framework */; };
 		D4D3D278217C39CF00677D92 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D277217C39CF00677D92 /* AssetsLibrary.framework */; };
@@ -126,6 +132,15 @@
 		D47E3A05236050F50072AAF1 /* JKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLoadingView.m; sourceTree = "<group>"; };
 		D47E3A06236050F50072AAF1 /* INewsX.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = INewsX.entitlements; sourceTree = "<group>"; };
 		D47E3A07236050F60072AAF1 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		D47E665924A0A42E004F16B6 /* CustomURLSchemeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomURLSchemeHandler.h; sourceTree = "<group>"; };
+		D47E665A24A0A42E004F16B6 /* CustomURLSchemeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomURLSchemeHandler.m; sourceTree = "<group>"; };
+		D47E665B24A0A42E004F16B6 /* NSDictionary+JSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONString.h"; sourceTree = "<group>"; };
+		D47E665C24A0A42E004F16B6 /* NSDictionary+JSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONString.m"; sourceTree = "<group>"; };
+		D47E665D24A0A42E004F16B6 /* SHBasePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBasePlugin.h; sourceTree = "<group>"; };
+		D47E665E24A0A42E004F16B6 /* SHBasePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBasePlugin.m; sourceTree = "<group>"; };
+		D47E666224A0D0C0004F16B6 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		D47E666324A0D0C0004F16B6 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
+		D47E666424A0D0C0004F16B6 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		D4B21FEC218AFA4B0017E02B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D4D3D275217C2C7600677D92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D4D3D277217C39CF00677D92 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -328,6 +343,9 @@
 			isa = PBXGroup;
 			children = (
 				D47E39B6236050F50072AAF1 /* Assets.xcassets */,
+				D47E666324A0D0C0004F16B6 /* app.css */,
+				D47E666424A0D0C0004F16B6 /* jquery.js */,
+				D47E666224A0D0C0004F16B6 /* style.css */,
 				D47E39EB236050F50072AAF1 /* Launch Screen.storyboard */,
 				D47E39F3236050F50072AAF1 /* all.txt */,
 				D47E39F4236050F50072AAF1 /* DengTa.json */,
@@ -348,6 +366,7 @@
 		D47E39F8236050F50072AAF1 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				D47E665824A0A42E004F16B6 /* WKPlugin */,
 				D47E39F9236050F50072AAF1 /* Category */,
 				D47E39FC236050F50072AAF1 /* CloudHandle */,
 				D47E3A03236050F50072AAF1 /* LoadingView */,
@@ -384,6 +403,19 @@
 				D47E3A05236050F50072AAF1 /* JKLoadingView.m */,
 			);
 			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		D47E665824A0A42E004F16B6 /* WKPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				D47E665924A0A42E004F16B6 /* CustomURLSchemeHandler.h */,
+				D47E665A24A0A42E004F16B6 /* CustomURLSchemeHandler.m */,
+				D47E665B24A0A42E004F16B6 /* NSDictionary+JSONString.h */,
+				D47E665C24A0A42E004F16B6 /* NSDictionary+JSONString.m */,
+				D47E665D24A0A42E004F16B6 /* SHBasePlugin.h */,
+				D47E665E24A0A42E004F16B6 /* SHBasePlugin.m */,
+			);
+			path = WKPlugin;
 			sourceTree = "<group>";
 		};
 		F8E469551395739C00DB05C8 = {
@@ -501,7 +533,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D47E666724A0D0C0004F16B6 /* jquery.js in Resources */,
+				D47E666624A0D0C0004F16B6 /* app.css in Resources */,
 				D47E3A20236050F60072AAF1 /* all.txt in Resources */,
+				D47E666524A0D0C0004F16B6 /* style.css in Resources */,
 				D47E3A14236050F60072AAF1 /* SHSettingViewController.xib in Resources */,
 				D47E3A23236050F60072AAF1 /* qz_loading.gif in Resources */,
 				D47E3A08236050F60072AAF1 /* Assets.xcassets in Resources */,
@@ -575,6 +610,7 @@
 				D47E3A0A236050F60072AAF1 /* SHBaseResponse.m in Sources */,
 				D47E3A17236050F60072AAF1 /* SHNewsInfoModel.m in Sources */,
 				D47E3A1D236050F60072AAF1 /* AppDelegate.m in Sources */,
+				D47E666124A0A42E004F16B6 /* SHBasePlugin.m in Sources */,
 				D47E3A24236050F60072AAF1 /* UIView+Extension.m in Sources */,
 				D47E3A0B236050F60072AAF1 /* SHBaseNavigationController.m in Sources */,
 				D47E3A26236050F60072AAF1 /* ZZRDocument.m in Sources */,
@@ -589,12 +625,14 @@
 				D47E3A1E236050F60072AAF1 /* main.m in Sources */,
 				D47E3A1A236050F60072AAF1 /* PostTableViewCell.m in Sources */,
 				D47E3A16236050F60072AAF1 /* SHLoveHelper.m in Sources */,
+				D47E666024A0A42E004F16B6 /* NSDictionary+JSONString.m in Sources */,
 				D47E3A09236050F60072AAF1 /* SHBaseRequest.m in Sources */,
 				D47E3A15236050F60072AAF1 /* WebViewController.m in Sources */,
 				D47E3A19236050F60072AAF1 /* SHNewsGetApi.m in Sources */,
 				D47E3A0D236050F60072AAF1 /* AllListTableViewController.m in Sources */,
 				D47E3A0F236050F60072AAF1 /* GlobalTimelineViewController.m in Sources */,
 				D47E3A0E236050F60072AAF1 /* DetailItemTableViewController.m in Sources */,
+				D47E665F24A0A42E004F16B6 /* CustomURLSchemeHandler.m in Sources */,
 				D47E3A13236050F60072AAF1 /* SHSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,7 +710,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
@@ -775,7 +813,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
@@ -842,7 +880,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
