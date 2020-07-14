@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>
+            聚阅读
+        </title>
+        <meta charset="utf-8">
+        <link href="http://120.55.163.83/download/app/rss/favicon.ico" rel="GEEK ICON">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <link href="http://120.55.163.83/download/app/rss/stlye.css"
+        media="screen" type="text/css" rel="stylesheet">
+    </head>
+
+    <body>
+      <br>
+      <h2><center>
+        <p><img src="http://120.55.163.83/download/app/rss/favicon.ico" width="64" height="64"> </p>
+        <p>Sherwin.Chen</p>
+      </center></h2>
+      <br>
+      <br>
+    <div class="container">
+
+    <script type="text/javascript" src="rsslist.js"></script>
+    <script type="text/javascript">
+
+/*
+定义基参数.
+*/
+    var baseURL="./curl.php";
+    var imgBaseURL="http://img2.cache.netease.com/m/newsapp/topic_icons/";
+    var listCout=20;
+
+    for(var i=0; i<jsonObject.length; i++)
+    {
+        var tmpObj = jsonObject[i];
+
+        var srcurl,imgurl;
+        srcurl = baseURL+"?tid="+tmpObj.tid+"&num=0&size="+listCout+"&title="+tmpObj.tname;
+
+        imgurl = imgBaseURL+tmpObj.tid+".png";
+
+        var element = "<div class='grid-4 floated-thumb'>" +
+	"<div class='post-thumb'><img width='60' height='60' alt='' src='"+imgurl+"'></div>"
+  +
+  "<div class='post-meta'><p><a href='"+srcurl+"' class='meta-title' target='_blank'>"+ tmpObj.tname +"</a><p id='alias'>"+ tmpObj.alias +
+  "</p></p></div>"
+  +
+  "</div>";
+        document.write(element);
+    }
+      </script>
+
+    </div>
+    </body>
+
+</html>

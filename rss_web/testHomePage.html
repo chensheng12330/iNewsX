@@ -1,0 +1,225 @@
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<meta charset="utf-8">
+    <link href="http://csdnimg.cn/public/favicon.ico" rel="GEEK ICON">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+</head>
+
+<style media="screen">
+.flow li {
+    border-bottom: 1px dotted #000;
+    display: block;
+    margin-bottom: 13px;
+    padding-bottom: 13px;
+}
+</style>
+
+<script type="text/javascript">
+        function getJson() {
+            // 在IE7下测试通过，IE6下必须创建 new ActiveXObject("MSXML2.XMLHTTP.6.0")
+            var request = new XMLHttpRequest();
+
+            request.open('GET', 'http://c.m.163.com/nc/article/list/T1374539835965/0-20.html');
+            request.onreadystatechange = function() {
+                if (request.readyState == 4 && request.status == 200) {
+                    var objs = eval(request.responseText);
+                    alert(objs.length); // 2
+                    alert(objs[0].id);  // 1
+                    alert(objs[1].name);// 'n_2'
+                }
+            }
+            request.send(null);
+        }
+  </script>
+
+<body bgcolor="white" text="black">
+<div class="center">
+        <div class="box flow">
+          <h2>这里是博客标题</h2>
+          <ul>
+                          <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/56223" title="SDCC 2015架构专场：一线互联网公司论道架构实践（PPT全回顾）">
+                  SDCC 2015架构专场：一线互联网公司论道架构实践（PPT全回顾）                  </a></h3>
+                                <div class="summary clearfix">
+                                    由CSDN打造的数据库核心技术与实战应用峰会、互联网应用架构实战峰会即将召开。这两场峰会将邀请业内顶尖的架构师和技术专家，共同探讨高可用/高并发系统架构设计、新技术应用、移动应用架构等领域的热点话题与技术。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/56491" title="华云数据：云计算关键是运营和交付，而非OpenStack或Docker">
+                  华云数据：云计算关键是运营和交付，而非OpenStack或Docker                  </a></h3>
+                                <div class="summary clearfix">
+                                    华云数据董事长兼首席执行官许广彬、首席技术官郑军以及首席战略官郁珉介绍华云数据关于云计算、大数据的最新发展计划，并根据公司在OpenStack、Docker等技术上的实践心得，分享其应用趋势。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/56195" title=" iOS冰与火之歌番外篇 - 在非越狱手机上进行App Hook">
+                   iOS冰与火之歌番外篇 - 在非越狱手机上进行App Hook                  </a></h3>
+                                <div class="summary clearfix">
+                                    冰指的是用户态，火指的是内核态。如何突破像冰箱一样的用户态沙盒最终到达并控制如火焰一般燃烧的内核就是《iOS冰与火之歌》这一系列文章将要讲述的内容。                </div>
+                              </li>
+                            <li class="ad_flow_text">
+                <!--
+				<dl>
+										<dt><a title="干爹Oracle到底对Java8做了什么?" href="http://g.csdn.net/5272492" target="_blank">干爹Oracle到底对Java8做了什么?</a></dt>
+					<dd>经过2年半的努力、屡次的延期和9个里程碑版本，甲骨文的Java开发团队终于发布了Java 8正式版本。Ja...</dd>
+										<dt><a title="【参会必杀技】一张门票也能秒杀团购价" href="http://g.csdn.net/5272400" target="_blank">【参会必杀技】一张门票也能秒杀团购价</a></dt>
+					<dd>一人购票三人同行，单张门票享5折，大会展位、杂志广告、平台推广统统有，打着灯笼都难找！尽在...</dd>
+									</dl>
+				 -->
+                <dl>
+                  <div adsid="home06a"><div style="padding:0;margin:0;border:0;" id="3059a7e4_0"><dt><a title="我为什么选择AngularJS？" href="http://csdnim.qtmojo.com/c?d=csdnim&amp;i=z138,10511271,2111,10778&amp;rf=http%3A%2F%2Fwww.csdn.net%2F&amp;a=dxD56fwn11UK20BTeux7jifanOz6&amp;u=http://edu.csdn.net/course/detail/1857" target="_blank">我为什么选择AngularJS？</a></dt><dd>作为一个实实在在的前端码农，辛苦Coding很多年，一直平平淡淡，直到有一天，我决定学习和使用AngularJS，才发现，原来前端码农也可以通过更……</dd></div></div>
+                  <div adsid="home06b"><div style="padding:0;margin:0;border:0;" id="232ef0902_0"><dt><a title="给有真正追求的开发者一个自我成长的阶梯！" href="http://csdnim.qtmojo.com/c?d=csdnim&amp;i=z139,10511292,2253,11445&amp;rf=http%3A%2F%2Fwww.csdn.net%2F&amp;a=d7DM6lwn12Bjz0BTeux7r5fbSarT&amp;u=http://edu.csdn.net/" target="_blank">给有真正追求的开发者一个自我成长的阶梯！</a></dt><dd>一个码农，一旦有了真正的追求，便一发不可收，如何才能效率倍增，用最短的时间，获得最快的成长，让自己的价值得到百倍发挥？资深技术大牛坐镇为你指明出路……</dd></div></div>
+                </dl>
+              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/56086" title="如何用70行Java代码实现深度神经网络算法">
+                  如何用70行Java代码实现深度神经网络算法                  </a></h3>
+                                <div class="summary clearfix">
+                                    机器学习的真正难度在于它为什么要这么计算，背后的数学原理是什么，怎么推导得来的公式。网上大部分的资料都在介绍这部分理论知识，却很少告诉你该算法的计算过程和程序落地是怎么样的。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/56413" title="《近匠》APICloud CEO 刘鑫：致进行中的我们">
+                  《近匠》APICloud CEO 刘鑫：致进行中的我们                  </a></h3>
+                                <div class="summary clearfix">
+                                    “HTML5和Native APP谁主导未来？”当这种算命式的争论已不再是热点的时候，两种技术的融合变成了主流的声音&mdash;&mdash;这是在年前APICloud举办SuperWebview发布会上所体现的核心，为此CSDN《近匠》120期采访了APICloud CEO 刘鑫 谈谈APICloud对开发...                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/56136" title="Fuel 8.0初步测试">
+                  Fuel 8.0初步测试                  </a></h3>
+                                <div class="summary clearfix">
+                                    Fuel8.0，最终发布时间，应该是二月底，现在每天build的版本，功能上，应该是基本都是一样，后续更多的是bug修复。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://www.csdn.net/article/a/2016-02-18/15835221" title="基于DragonBoard 410C的智能空调系统方案">
+                  基于DragonBoard 410C的智能空调系统方案                  </a></h3>
+                                <div class="summary clearfix">
+                                    日常生活工作中，有些场合需要特定的环境条件，如我们平时的电子设计实验室、舒适的婴儿寝室，对环境要求比较高，其中包括两个重要参数：温度、湿度，本文讲解基于DragonBoard410C的智能空调系统方案。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55984" title=" 	聚焦私有云市场，看BoCloud博云如何将Docker落地实践">
+                   	聚焦私有云市场，看BoCloud博云如何将Docker落地实践                  </a></h3>
+                                <div class="summary clearfix">
+                                    本文来自对BoCloud创始人兼CEO花磊以及CTO李亚琼的专访整理。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://g.csdn.net/5291838" title="MongoDB索引使用技巧攻略">
+                  MongoDB索引使用技巧攻略                  </a></h3>
+                                <div class="summary clearfix">
+                                    MongoDB同传统数据库索引一样，同样使用的是B-tree索引，绝大多数优化MySQL/Oracle/SQLlite索引技术也同样适用于MongoDB。本文向大家介绍MongoDB索引使用技巧。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://edu.csdn.net/course/detail/1998" title="淘宝丁奇：如何解决影响MySQL使用的9大问题？【视频】">
+                  淘宝丁奇：如何解决影响MySQL使用的9大问题？【视频】                  </a></h3>
+                                <div class="summary clearfix">
+                                    丁奇此前分享了《解析MySQL各版本并行复制》内容，发现大家对于MySQL的可靠性、可用性、稳定性等方面还有很多问题困惑，本次分享重点剖析了如何彻底解决影响MySQL使用的9大问题。内容包括问题产生的背景，数据库内核和运维团...                </div>
+                              </li>
+                                          <li class="ad_flow_text">
+                <!--
+				<dl>
+										<dt><a title="学Android还花钱？月薪还不到8千？你OUT了！" href="http://g.csdn.net/5272274" target="_blank">学Android还花钱？月薪还不到8千？你OUT了！</a></dt>
+					<dd>3000余名经考试录取的学员，免费学习4个月，平均起薪8123元/月。找不到工作免费，薪水低了也免费！</dd>
+										<dt><a title="微信大会8月1日前购票8折并赠书" href="http://g.csdn.net/5272495" target="_blank">微信大会8月1日前购票8折并赠书</a></dt>
+					<dd>微信开发者大会演讲话题包括：企业服务号开发和高级应用、企业号开发、如何与业务系统对接、各种...</dd>
+									</dl>
+				 -->
+                <dl>
+                  <div adsid="home07a"><div style="padding:0;margin:0;border:0;" id="d8d59714_0"><dt><a title="Enterprise Architect：一个完整的集成解决方案，欢迎免费试用" href="http://csdnim.qtmojo.com/c?d=csdnim&amp;i=z140,10511274,2112,10780&amp;rf=http%3A%2F%2Fwww.csdn.net%2F&amp;a=dQDg6uwn12yY10BTeuy6FQrapECu&amp;u=http://mall.csdn.net/product/446?ref=首页推荐文字链" target="_blank">Enterprise Architect：一个完整的集成解决方案，欢迎免费试用</a></dt><dd>用UML建模工具的客户一定不能错过EA，它提供了UML整个生命周期工具集最全面详尽的功能，性能优异且价格低廉。现在就下载试用吧！</dd></div></div>
+                  <div adsid="home07b"><div style="padding:0;margin:0;border:0;" id="f50d3ee7_0"><dt><a title="因你而变，JIRA Software" href="http://csdnim.qtmojo.com/c?d=csdnim&amp;i=z141,10510123,2376,11944&amp;rf=http%3A%2F%2Fwww.csdn.net%2F&amp;a=dnDC6iwn13es80BTeuy6K0Ado2kW&amp;u=http://mall.csdn.net/product/730?ref=首页推荐文字链" target="_blank">因你而变，JIRA Software</a></dt><dd>JIRA Software可以帮你提升组织内部各部门管理的效率和效果，项目执行管理 、敏捷开发管理、产品Bug跟踪、客户服务等领域。立即试用吧！</dd></div></div>
+                </dl>
+              </li>
+                                        <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/54714" title="专访海康威视唐建伟：这是一个追求开发效率的时代">
+                  专访海康威视唐建伟：这是一个追求开发效率的时代                  </a></h3>
+                                <div class="summary clearfix">
+                                    如何为自己的团队寻找到优秀的问题跟踪管理软件和团队协作工具，是许多软件企业的当务之急。好的工具不仅可以大幅度提升效率，让编程变得简单快捷，保证稳定性和安全性，同时也可以让成员之间的协作更默契、效率。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://www.csdn.net/article/a/2016-02-17/15835206" title="深入浅出AllJoyn与互联网通讯">
+                  深入浅出AllJoyn与互联网通讯                  </a></h3>
+                                <div class="summary clearfix">
+                                    AllJoyn依托于开源框架，使得设备以及应用能够彼此发现与通讯。本文深入浅出地介绍了AllJoyn的体系结构、技术特点，以及实际的应用。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55863" title="Spreaker采用Lambda构建代理的实践">
+                  Spreaker采用Lambda构建代理的实践                  </a></h3>
+                                <div class="summary clearfix">
+                                    本周将有来自Marco的消息：Spreaker会采用API Gateway作为第三方服务代理。代理其他服务会让API更稳定，并有可能在不需更新客户端的情况下切换供应商。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55991" title="Google为手表App开发者推出了Google Play Services中国特别版">
+                  Google为手表App开发者推出了Google Play Services中国特别版                  </a></h3>
+                                <div class="summary clearfix">
+                                    <a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55991" title="Google为手表App开发者推出了Google Play Services中国特别版"><img src="http://images.csdn.net/20160218/20160217120358577.jpg" class="image"></a>
+                                                    </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55826" title="JetBrains正式发布Kotlin 1.0：JVM和Android上更好用的语言">
+                  JetBrains正式发布Kotlin 1.0：JVM和Android上更好用的语言                  </a></h3>
+                                <div class="summary clearfix">
+                                    Kotlin是一门实用的编程语言，可用于JVM和Android程序开发，Kotlin结合了面向对象和函数式特性，致力于互操作性、安全、简洁和工具支持。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55945" title="自学 iOS - 三十天三十个 Swift 项目">
+                  自学 iOS - 三十天三十个 Swift 项目                  </a></h3>
+                                <div class="summary clearfix">
+                                    <a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55945" title="自学 iOS - 三十天三十个 Swift 项目"><img src="http://images.csdn.net/20160217/b1390.jpg" class="image"></a>
+                                                    </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://www.csdn.net/article/2016-02-17/2826599" title="公有云运维安全常见四大难题及解决方案">
+                  公有云运维安全常见四大难题及解决方案                  </a></h3>
+                                <div class="summary clearfix">
+                                    安全运维是工程师对各种安全设备和软件进行运维保障系统安全，而运维安全相比之下是涵盖了整个云计算系统和安全有关的方方面面。本文主要探讨公有云环境下运维安全常见的难题及解决方案。                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55673" title="通过AWS创建无服务器的动态DNS系统">
+                  通过AWS创建无服务器的动态DNS系统                  </a></h3>
+                                <div class="summary clearfix">
+                                    在本文中，我们讲述了如何通过一个小脚本与一些AWS服务来构建自己的动态DNS系统。也有其他系统能提供类似的解决方案，然而只用AWS服务与几行代码来构建无服务器系统确实简单合算；下面是在AWS上如何构建自己的无服务器解决...                </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55617" title="再读《Threading Programming Guide》：线程配置与Run Loop">
+                  再读《Threading Programming Guide》：线程配置与Run Loop                  </a></h3>
+                                <div class="summary clearfix">
+                                    <a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55617" title="再读《Threading Programming Guide》：线程配置与Run Loop"><img src="http://images.csdn.net/20160217/Untitled-1.jpg" class="image"></a>
+                                                    </div>
+                              </li>
+                                                      <li>
+                <h3><a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55618" title="Apache Flink ：回顾2015，展望2016">
+                  Apache Flink ：回顾2015，展望2016                  </a></h3>
+                                <div class="summary clearfix">
+                                    <a onclick="LogClickCount(this,331);" target="_blank" href="http://geek.csdn.net/news/detail/55618" title="Apache Flink ：回顾2015，展望2016"><img src="http://images.csdn.net/20160217/20160215165721122.jpg" class="image"></a>
+                                                    </div>
+                              </li>
+                                                  </ul>
+          <!--<ul class="develop">
+                          <li><span></span><a title="Android FastJson与不规范JSON引发的血案" href="http://blog.csdn.net/sbsujjbcy/article/details/50414188" target="_blank" onclick="LogClickCount(this,366);">
+                Android FastJson与不规范JSON引发的血案                </a></li>
+                          <li><span></span><a title="编译器架构的王者LLVM——（11）深入理解GetElementPtr" href="http://blog.csdn.net/xfxyy_sxfancy/article/details/50413808" target="_blank" onclick="LogClickCount(this,366);">
+                编译器架构的王者LLVM——（11）深入理解GetElementPtr                </a></li>
+                          <li><span></span><a title="xUtils更新到3.0后的基本使用规则" href="http://blog.csdn.net/liyuanjinglyj/article/details/50411950" target="_blank" onclick="LogClickCount(this,366);">
+                xUtils更新到3.0后的基本使用规则                </a></li>
+                          <li><span></span><a title="关于MultiDex方案的一点研究与思考" href="http://blog.csdn.net/zhaokaiqiang1992/article/details/50412975" target="_blank" onclick="LogClickCount(this,366);">
+                关于MultiDex方案的一点研究与思考                </a></li>
+                          <li><span></span><a title="Spark修炼之道（高级篇）——Spark源码阅读：第十二节 Spark SQL 处理流程分析" href="http://blog.csdn.net/lovehuangjiaju/article/details/50375431" target="_blank" onclick="LogClickCount(this,366);">
+                Spark修炼之道（高级篇）——Spark源码阅读：第十二节 Spark SQL 处理流程分析                </a></li>
+                          <li><span></span><a title="猫猫学iOS之UITextField全解" href="http://blog.csdn.net/u013357243/article/details/50418795" target="_blank" onclick="LogClickCount(this,366);">
+                猫猫学iOS之UITextField全解                </a></li>
+                          <li><span></span><a title="如何获取彩色图像中的主色彩" href="http://blog.csdn.net/jia20003/article/details/50414595" target="_blank" onclick="LogClickCount(this,366);">
+                如何获取彩色图像中的主色彩                </a></li>
+                          <li><span></span><a title="深度学习与自然语言处理之五：从RNN到LSTM" href="http://blog.csdn.net/malefactor/article/details/50436735" target="_blank" onclick="LogClickCount(this,366);">
+                深度学习与自然语言处理之五：从RNN到LSTM                </a></li>
+                          <li><span></span><a title="android permission权限与安全机制解析（下）" href="http://blog.csdn.net/self_study/article/details/50186435" target="_blank" onclick="LogClickCount(this,366);">
+                android permission权限与安全机制解析（下）                </a></li>
+                          <li><span></span><a title="使用Python和Splinter实现12306火车票查询与抢票" href="http://blog.csdn.net/liyuefeilong/article/details/50428607" target="_blank" onclick="LogClickCount(this,366);">
+                使用Python和Splinter实现12306火车票查询与抢票                </a></li>
+                      </ul>-->
+          <div align="center"><a onclick="LogClickCount(this,331);" class="more" target="_blank" href="http://geek.csdn.net">查看更多全站动态</a></div>
+        </div>
+      </div>
+
+
+<input type="button" value="GetJson" onclick="getJson();" />
+
+</body>
+</html>
