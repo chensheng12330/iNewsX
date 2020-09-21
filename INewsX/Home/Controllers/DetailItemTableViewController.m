@@ -127,7 +127,14 @@
 
     if(h5URL.length>0)
     {
-        [cell.imageView setImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+        NSString *imgUrl = info[@"img"];
+        if (imgUrl.length>0) {
+            [cell.imageView setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+        }
+        else {
+            [cell.imageView setImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+        }
+        
     }
     else {
 

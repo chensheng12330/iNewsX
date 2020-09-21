@@ -13,11 +13,14 @@
 #import "AppDelegate.h"
 #import "SHLoveHelper.h"
 
+#import <AFNetworking/AFURLSessionManager.h>
+
 //全部分类列表
 @interface AllListTableViewController ()
 @property (readwrite, nonatomic, strong) NSArray *allList;
 
 @property (nonatomic, strong) NSArray *mDengTaList;
+@property (nonatomic, strong) NSArray *mINewsList;
 
 @end
 
@@ -51,6 +54,7 @@
 
         //[data objectFromJSONData];
         [self getDengTaData];
+        [self getINewsData];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -103,6 +107,71 @@
     return ;
 }
 
+- (void) getINewsData {
+    
+    //获取本地缓存
+    //从本地读取数据
+    NSArray *paths      = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir    = [paths objectAtIndex:0];
+    NSString *lovePath  = [docDir stringByAppendingPathComponent:@"iNews.dat"];
+   
+    NSData *locData = [NSData dataWithContentsOfFile:lovePath];
+    if(locData){
+        NSArray *tempLocAry = [NSJSONSerialization JSONObjectWithData:locData options:0 error:nil];
+        if(tempLocAry.count>0){
+            self.mINewsList = tempLocAry;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        }
+    }
+    
+    /////////////////////
+    //更新本地缓存
+
+    // step1. 初始化AFURLSessionManager对象
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+    AFHTTPResponseSerializer *jsonResp = [AFHTTPResponseSerializer serializer];
+    jsonResp.acceptableContentTypes = [NSSet setWithObjects:@"*", @"text/json", @"application/javascript", nil];
+    manager.responseSerializer = jsonResp;
+    
+    // step2. 获取AFURLSessionManager的task对象
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://sunny90.com//ios/rss/iNewsList.js"]];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
+                                                   uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+                                                       
+                                                   } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+                                                       
+                                                   } completionHandler:^(NSURLResponse * _Nonnull response,
+                                                                         NSData*   responseObject,
+                                                                         NSError * _Nullable error)
+    {
+        if (error==NULL && responseObject != NULL) {
+            //将数据存入本地
+            [responseObject writeToFile:lovePath atomically:YES];
+            
+            if(self.mINewsList==NULL){
+                
+                NSArray *tempLocAry = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                                      options:0
+                                                                        error:nil];
+                if(tempLocAry.count>0){
+                    self.mINewsList = tempLocAry;
+                    [self.tableView reloadData];
+                }
+            }
+        }
+                                                  
+    }];
+
+    // step3. 发动task
+    [dataTask resume];
+    return;
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -133,6 +202,10 @@
     else if([info[@"cid"] isEqualToString:SH_DengTaFlag]){
         count = self.mDengTaList.count;
     }
+    else if([info[@"cid"] isEqualToString:SH_INewsFlag]){
+        count = self.mINewsList.count;
+    }
+    
     else {
         count = ((NSArray*)info[@"tList"]).count;
     }
@@ -165,10 +238,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     else if([info[@"cid"] isEqualToString:SH_DengTaFlag]){
         detailItemVC.allList   = self.mDengTaList;
     }
+    else if([info[@"cid"] isEqualToString:SH_INewsFlag]){
+        detailItemVC.allList   = self.mINewsList;
+    }
     else {
         NSArray *newsList = info[@"tList"];
         detailItemVC.allList   = newsList;
     }
+    
 
     detailItemVC.titleName = info[@"cName"];
   

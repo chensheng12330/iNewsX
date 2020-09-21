@@ -5,6 +5,16 @@
         "weburl": "https://ressrc.com/category/jianwen/"
     },
     {
+        "tname": "华尔街文摘",
+        "alias": "华尔街文摘",
+        "weburl": "https://wsdigest.com/home"
+    },
+    {
+        "tname": "今日热榜",
+        "alias": "华尔街文摘",
+        "weburl": "https://tophub.today"
+    },
+    {
         "tname": "政事堂",
         "alias": "政事堂 顾子明",
         "weburl": "https://ressrc.com/category/jianwen/guziming/"
