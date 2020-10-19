@@ -45,13 +45,35 @@
     [self loadHtmlData];
 
 
+    //分享
     UIBarButtonItem *sysBarItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(open4Safari)];
     sysBarItem1.tintColor = [UIColor systemBlueColor];
-
     self.navigationItem.rightBarButtonItem = sysBarItem1;
-
+    
+    //返回- 判断当前页面是否为H5内部多级跳转
+    /**
+     屏右滑直接返回上级
+     按返回按钮，先H5内部返回，再VC页面返回.
+     
+     */
+    [self setLeftBarButtonItem];
     return;
 }
+
+-(void)setLeftBarButtonItem
+{
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *arrowImage = [UIImage imageNamed:@"icon_arrow_black_nor"];
+    //backButton.frame = CGRectMakeWithSize(arrowImage.size);
+    //backButton.frame = CGRectMake(0, 0, 44, 44);
+    backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+    [backButton setImage:arrowImage forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.leftBarButtonItem = backItem;
+}
+
 
 -(void) loadHtmlData {
 
@@ -117,5 +139,15 @@
     //用safari打开.
 
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.webUrlStr]];
+}
+
+- (void) backButtonAction:(UIButton*) sender {
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    return;
 }
 @end

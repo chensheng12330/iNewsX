@@ -192,7 +192,8 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSString *urlString = url.absoluteString;
 
     if([urlString isEqualToString:self.webUrlStr] ||
-       [urlString containsString:@"/page/"]){
+       [urlString containsString:@"/page/"] ||
+       [urlString containsString:@"&pg="]){
         decisionHandler(WKNavigationActionPolicyAllow);
     }
     else {
