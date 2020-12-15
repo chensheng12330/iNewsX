@@ -86,11 +86,12 @@
         [tip hideAnimated:YES];
         [self.refreshControl endRefreshing];
 
-        SHNewsInfoResponse *responseData = [[SHNewsInfoResponse alloc] initWithString:request.responseString error:nil];
+        SHNewsBaseResponse *responseData = [[SHNewsBaseResponse alloc] initWithString:request.responseString error:nil];
 
-        if(responseData.tab_list.count>0){
-            self.posts = responseData.tab_list;
-
+        if(responseData.data.tab_list.count>0){
+            self.posts = responseData.data.tab_list;
+            
+            self.limit += SH_MAX;
             [self.tableView reloadData];
 
             //[QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:1];
@@ -115,22 +116,22 @@
 
     QMUITips *tip = [QMUITips showLoading:@"努力加载中..." inView:self.view];
 
-    SHNewsGetApi *newGetApi = [[SHNewsGetApi alloc] initWithTid:self.newsItemInfo[@"tid"] PageIndex:(self.limit+SH_MAX) pageSize:SH_MAX];
+    SHNewsGetApi *newGetApi = [[SHNewsGetApi alloc] initWithTid:self.newsItemInfo[@"tid"] PageIndex:self.limit pageSize:SH_MAX];
 
     [newGetApi startWithCompletionBlockWithSuccess:^( YTKBaseRequest * _Nonnull request) {
 
         [tip hideAnimated:YES];
 
-        SHNewsInfoResponse *responseData = [[SHNewsInfoResponse alloc] initWithString:request.responseString error:nil];
+        SHNewsBaseResponse *responseData = [[SHNewsBaseResponse alloc] initWithString:request.responseString error:nil];
 
-        if(responseData.tab_list.count>0){
+        if(responseData.data.tab_list.count>0){
 
             NSMutableArray *addM = [NSMutableArray arrayWithArray: self.posts];
-            [addM addObjectsFromArray:responseData.tab_list];
+            [addM addObjectsFromArray:responseData.data.tab_list];
 
             self.posts = addM;
 
-            self.limit+= (NSInteger) responseData.tab_list.count;
+            self.limit += SH_MAX;
 
             [self.tableView reloadData];
 

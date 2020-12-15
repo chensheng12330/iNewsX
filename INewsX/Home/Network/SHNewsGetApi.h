@@ -26,3 +26,12 @@
 
 @interface SHGetWebPageApi : SHBaseRequest
 @end
+
+/**
+获取某分类下的媒体列表.
+ */
+@interface SHGetNewsMediaListApi : SHBaseRequest
+- (instancetype)initWithCid:(NSString*) Cid
+                  pageIndex:(NSInteger) pageIndex
+                   pageSize:(NSInteger) pageSize;
+@end

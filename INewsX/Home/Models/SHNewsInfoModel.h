@@ -28,6 +28,14 @@
 
 @class SHNewsInfoModel;
 @protocol SHNewsInfoModel;
+@class SHNewsInfoResponse;
+
+@interface SHNewsBaseResponse : JSONModel
+
+@property (nonatomic, strong) SHNewsInfoResponse<Optional> *data;
+
+@end
+
 
 @interface SHNewsInfoResponse : JSONModel
 

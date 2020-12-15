@@ -77,7 +77,7 @@
                                             @"User-N": @"/gv3ptixznNuPZGK2rxlWa+ql4kn60ovuSkt3LEVh1Y7yZdSS7sKRDOOGfpo1zdR",
                                             @"X-Trace-Id": @"1541989782_7583658624_C6593DFA-CCBC-462C-BC03-10F087B39EA9",
                                             @"User-C": @"5oiR",
-                                            @"User-Agent": @"NewsApp/30.1 iOS/11.4 (iPhone10,3)",
+                                            @"User-Agent": @"NewsApp/64.1 iOS/14.0 (iPhone10,3)",
                                             @"Accept-Language": @"zh-Hans;q=1.0",
                                             @"Accept-Encoding": @"gzip;q=1.0, compress;q=0.5",
                                             @"Accept":@"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"

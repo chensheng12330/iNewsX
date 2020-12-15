@@ -10,11 +10,14 @@
 #import "UIImageView+AFNetworking.h"
 #import "GlobalTimelineViewController.h"
 #import "SHHomeWebViewController.h"
+#import "SHNewsGetApi.h"
 
 @interface DetailItemTableViewController ()
 @property (nonatomic,strong) UIButton *btnSel;
 @property (nonatomic,strong) NSMutableArray *addArray;
 
+@property (nonatomic,assign) NSInteger limit;
+@property(nonatomic, strong) NSString *mCid;
 @end
 
 @implementation DetailItemTableViewController
@@ -23,19 +26,21 @@
     [super viewDidLoad];
     
     self.title = self.titleName;
-
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    /*
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.btnSel = btn;
     
-    [btn setFrame:CGRectMake(0, 0, 80, 40)];
-    [btn setBackgroundColor:[UIColor darkGrayColor]];
-    [btn setTitle:@"选择(0)" forState:UIControlStateNormal ];
-    [btn addTarget:self action:@selector(OutJosn:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    */
-
+    ///处理异常
+    if ([self.allList isKindOfClass:NSString.class]) {
+        
+        self.mCid = (NSString*)self.allList;
+        
+        self.allList = @[];
+        self.limit = 0;
+        //添加加载的UI.
+        [self addFooter];
+        
+        [self loadMore];
+    }
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.addArray = [NSMutableArray new];
     
@@ -43,9 +48,65 @@
 }
 
 
--(void) OutJosn:(UIButton*) sender
+- (void)addFooter
 {
+    __unsafe_unretained  DetailItemTableViewController *vc = self;
+
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        // 下拉刷新
+        [vc loadMore];
+
+    }];
+    return;
 }
+
+-(void)loadMore
+{
+
+    QMUITips *tip = [QMUITips showLoading:@"努力加载中..." inView:self.view];
+
+    SHGetNewsMediaListApi *newGetApi = [[SHGetNewsMediaListApi alloc] initWithCid:self.mCid
+                                                                        pageIndex:self.limit
+                                                                         pageSize:20];
+
+    [newGetApi startWithCompletionBlockWithSuccess:^( YTKBaseRequest * _Nonnull request) {
+
+        [tip hideAnimated:YES];
+
+        NSArray* list = request.responseJSONObject[@"tList"];
+
+        if(list.count > 0){
+
+            NSMutableArray *addM = [NSMutableArray arrayWithArray: self.allList ];
+            [addM addObjectsFromArray:list];
+
+            self.allList = addM;
+
+            self.limit += 20;
+
+            [self.tableView reloadData];
+
+            //[QMUITips showSucceed:@"加载完成" inView:COM.appDelegate.window hideAfterDelay:1];
+        }
+        else {
+            [QMUITips showInfo:@"未获取到数据." inView:COM.appDelegate.window hideAfterDelay:2];
+        }
+
+        [self.tableView.mj_footer endRefreshing];
+
+    } failure:^( YTKBaseRequest * request) {
+
+        [tip hideAnimated:YES];
+
+        [self.tableView.mj_footer endRefreshing];
+
+        [QMUITips showError:@"网络问题，加载失败" inView:COM.appDelegate.window hideAfterDelay:2];
+    }];
+
+    return;
+}
+
+#pragma mark - SH 其它
 
 -(void) addNewsItemForButton:(UIButton*) sender
 {
@@ -106,7 +167,7 @@
 
             [btn addTarget:self action:@selector(addNewsItemForButton:) forControlEvents:UIControlEventTouchUpInside];
             
-            [cell addSubview:btn];
+            [cell.contentView addSubview:btn];
 
             if([info[@"cid"]isEqualToString:SH_MyLoveCatFlag]) {
                 [btn setTitle:@" - " forState:UIControlStateNormal ];
@@ -138,7 +199,9 @@
     }
     else {
 
-        NSString *imageURL = [NSString stringWithFormat:@"http://timge7.126.net/image?w=68&h=68&quality=75&url=http%%3A%%2F%%2Fimg2.cache.netease.com%%2Fm%%2Fnewsapp%%2Ftopic_icons%%2F%@.png",info[@"img"]];
+        //NSString *imageURL = [NSString stringWithFormat:@"http://timge7.126.net/image?w=68&h=68&quality=75&url=http%%3A%%2F%%2Fimg2.cache.netease.com%%2Fm%%2Fnewsapp%%2Ftopic_icons%%2F%@.png",info[@"img"]];
+        
+        NSString *imageURL = info[@"topic_icons"];
 
         NSLog(@"%@",imageURL);
 

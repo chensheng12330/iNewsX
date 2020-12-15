@@ -9,3 +9,7 @@
 @implementation SHNewsInfoModel
 
 @end
+
+
+@implementation SHNewsBaseResponse
+@end

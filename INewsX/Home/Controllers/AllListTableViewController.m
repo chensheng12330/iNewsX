@@ -205,7 +205,6 @@
     else if([info[@"cid"] isEqualToString:SH_INewsFlag]){
         count = self.mINewsList.count;
     }
-    
     else {
         count = ((NSArray*)info[@"tList"]).count;
     }
@@ -232,24 +231,27 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     NSDictionary *info = self.allList[(NSUInteger)indexPath.row];
 
-    if ([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]) {
+    if([info[@"cid"] isEqualToString:SH_INewsFlag]){
+        detailItemVC.allList   = self.mINewsList;
+    }
+    else if ([info[@"cid"] isEqualToString:SH_MyLoveCatFlag]) {
         detailItemVC.allList   = COM.mLoveHelper.arLoverList;
     }
     else if([info[@"cid"] isEqualToString:SH_DengTaFlag]){
         detailItemVC.allList   = self.mDengTaList;
     }
-    else if([info[@"cid"] isEqualToString:SH_INewsFlag]){
-        detailItemVC.allList   = self.mINewsList;
-    }
     else {
-        NSArray *newsList = info[@"tList"];
+        //注意，此处数据类型为NSString类型,为了统一由detailItemVC，需内部对类型进行判断.
+        NSArray *newsList = info[@"cid"];
         detailItemVC.allList   = newsList;
     }
     
-
     detailItemVC.titleName = info[@"cName"];
-  
     [self.navigationController pushViewController:detailItemVC animated:YES];
+    return;
+    
+
+    
 }
 
 @end
