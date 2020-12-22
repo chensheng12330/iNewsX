@@ -12,6 +12,8 @@
 #import "JSONHTTPClient.h"
 
 #import <WebKit/WKWebView.h>
+#import <WebKit/WKWebViewConfiguration.h>
+#import "HLLWKURLProtocol.h"
 
 @interface WebViewController ()
 @property (nonatomic, strong) WKWebView *webView;
@@ -30,9 +32,14 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    configuration.allowsInlineMediaPlayback=true;
+    [configuration ssRegisterURLProtocol:[HLLWKURLProtocol class]];
+    
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scrollView.showsVerticalScrollIndicator = YES;
+    self.webView.allowsBackForwardNavigationGestures = YES;
     [self.view addSubview:self.webView];
 
     self.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

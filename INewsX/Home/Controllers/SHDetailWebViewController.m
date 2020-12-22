@@ -11,6 +11,8 @@
 #import "JKLoadingView.h"
 
 #import <WebKit/WebKit.h>
+#import <WebKit/WKWebViewConfiguration.h>
+#import "HLLWKURLProtocol.h"
 
 @interface SHDetailWebViewController ()<WKNavigationDelegate>
 
@@ -27,11 +29,17 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame];
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    configuration.allowsInlineMediaPlayback=true;
+    [configuration ssRegisterURLProtocol:[HLLWKURLProtocol class]];
+    
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.navigationDelegate = self;
     self.webView.scrollView.showsVerticalScrollIndicator = YES;
     self.webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
+    self.webView.allowsBackForwardNavigationGestures = YES;
+    
     [self.view addSubview:self.webView];
 
     self.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

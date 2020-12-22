@@ -25,6 +25,9 @@
 #import "CustomURLSchemeHandler.h"
 #import <AFNetworking.h>
 
+#import <WebKit/WKWebViewConfiguration.h>
+#import "HLLWKURLProtocol.h"
+
 @interface SHHomeWebViewController ()<WKNavigationDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
@@ -53,13 +56,13 @@
     configuration.allowsInlineMediaPlayback = YES;        // 允许在线播放
     configuration.allowsAirPlayForMediaPlayback = YES;  //允许视频播放
     //[configuration setURLSchemeHandler:[CustomURLSchemeHandler new] forURLScheme: @"ioss"];
-
-
+    [configuration ssRegisterURLProtocol:[HLLWKURLProtocol class]];
+    
     self.webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
     self.webView.navigationDelegate = self;
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scrollView.showsVerticalScrollIndicator = YES;
-
+    self.webView.allowsBackForwardNavigationGestures = YES;
     [self.view addSubview:self.webView];
 
     self.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

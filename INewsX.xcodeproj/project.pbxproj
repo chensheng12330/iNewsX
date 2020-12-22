@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58AFD9162589A84600DB833F /* HLLWKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AFD9152589A84600DB833F /* HLLWKURLProtocol.m */; };
 		D47E3A08236050F60072AAF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D47E39B6236050F50072AAF1 /* Assets.xcassets */; };
 		D47E3A09236050F60072AAF1 /* SHBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E39BA236050F50072AAF1 /* SHBaseRequest.m */; };
 		D47E3A0A236050F60072AAF1 /* SHBaseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E39BC236050F50072AAF1 /* SHBaseResponse.m */; };
@@ -67,6 +68,8 @@
 /* Begin PBXFileReference section */
 		0C3590FD4CB0DD4155597904 /* Pods-INewsX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INewsX.release.xcconfig"; path = "Pods/Target Support Files/Pods-INewsX/Pods-INewsX.release.xcconfig"; sourceTree = "<group>"; };
 		50ABD6EC159FC2CE001BE42C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		58AFD9142589A84600DB833F /* HLLWKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLWKURLProtocol.h; sourceTree = "<group>"; };
+		58AFD9152589A84600DB833F /* HLLWKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLWKURLProtocol.m; sourceTree = "<group>"; };
 		9929BC50D303BF45C2CA335B /* libPods-INewsX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-INewsX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1F8AEF85C696BACCF13EC8F /* Pods-INewsX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INewsX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-INewsX/Pods-INewsX.debug.xcconfig"; sourceTree = "<group>"; };
 		D47E39B6236050F50072AAF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 				D47E39DA236050F50072AAF1 /* SHSettingViewController.xib */,
 				D47E39DB236050F50072AAF1 /* WebViewController.h */,
 				D47E39DC236050F50072AAF1 /* WebViewController.m */,
+				58AFD9142589A84600DB833F /* HLLWKURLProtocol.h */,
+				58AFD9152589A84600DB833F /* HLLWKURLProtocol.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 				D47E3A16236050F60072AAF1 /* SHLoveHelper.m in Sources */,
 				D47E666024A0A42E004F16B6 /* NSDictionary+JSONString.m in Sources */,
 				D47E3A09236050F60072AAF1 /* SHBaseRequest.m in Sources */,
+				58AFD9162589A84600DB833F /* HLLWKURLProtocol.m in Sources */,
 				D47E3A15236050F60072AAF1 /* WebViewController.m in Sources */,
 				D47E3A19236050F60072AAF1 /* SHNewsGetApi.m in Sources */,
 				D47E3A0D236050F60072AAF1 /* AllListTableViewController.m in Sources */,
