@@ -199,6 +199,10 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
        [urlString containsString:@"&pg="]){
         decisionHandler(WKNavigationActionPolicyAllow);
     }
+    else if ([urlString containsString:@"about:blank"]) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
     else {
 
         SHDetailWebViewController *detailWebVC = [[SHDetailWebViewController alloc] init];

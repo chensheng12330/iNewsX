@@ -42,9 +42,6 @@
 		D47E665F24A0A42E004F16B6 /* CustomURLSchemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E665A24A0A42E004F16B6 /* CustomURLSchemeHandler.m */; };
 		D47E666024A0A42E004F16B6 /* NSDictionary+JSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E665C24A0A42E004F16B6 /* NSDictionary+JSONString.m */; };
 		D47E666124A0A42E004F16B6 /* SHBasePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D47E665E24A0A42E004F16B6 /* SHBasePlugin.m */; };
-		D47E666524A0D0C0004F16B6 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = D47E666224A0D0C0004F16B6 /* style.css */; };
-		D47E666624A0D0C0004F16B6 /* app.css in Resources */ = {isa = PBXBuildFile; fileRef = D47E666324A0D0C0004F16B6 /* app.css */; };
-		D47E666724A0D0C0004F16B6 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = D47E666424A0D0C0004F16B6 /* jquery.js */; };
 		D4B21FED218AFA4B0017E02B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B21FEC218AFA4B0017E02B /* WebKit.framework */; };
 		D4D3D276217C2C7600677D92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D275217C2C7600677D92 /* QuartzCore.framework */; };
 		D4D3D278217C39CF00677D92 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D3D277217C39CF00677D92 /* AssetsLibrary.framework */; };
@@ -68,6 +65,7 @@
 /* Begin PBXFileReference section */
 		0C3590FD4CB0DD4155597904 /* Pods-INewsX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-INewsX.release.xcconfig"; path = "Pods/Target Support Files/Pods-INewsX/Pods-INewsX.release.xcconfig"; sourceTree = "<group>"; };
 		50ABD6EC159FC2CE001BE42C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		581B7597270165490030F4A3 /* 聚阅读Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "聚阅读Release.entitlements"; sourceTree = "<group>"; };
 		58AFD9142589A84600DB833F /* HLLWKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLWKURLProtocol.h; sourceTree = "<group>"; };
 		58AFD9152589A84600DB833F /* HLLWKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLWKURLProtocol.m; sourceTree = "<group>"; };
 		9929BC50D303BF45C2CA335B /* libPods-INewsX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-INewsX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,9 +139,6 @@
 		D47E665C24A0A42E004F16B6 /* NSDictionary+JSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONString.m"; sourceTree = "<group>"; };
 		D47E665D24A0A42E004F16B6 /* SHBasePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBasePlugin.h; sourceTree = "<group>"; };
 		D47E665E24A0A42E004F16B6 /* SHBasePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBasePlugin.m; sourceTree = "<group>"; };
-		D47E666224A0D0C0004F16B6 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
-		D47E666324A0D0C0004F16B6 /* app.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = app.css; sourceTree = "<group>"; };
-		D47E666424A0D0C0004F16B6 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		D4B21FEC218AFA4B0017E02B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		D4D3D275217C2C7600677D92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D4D3D277217C39CF00677D92 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -204,6 +199,7 @@
 		D47E39B5236050F50072AAF1 /* INewsX */ = {
 			isa = PBXGroup;
 			children = (
+				581B7597270165490030F4A3 /* 聚阅读Release.entitlements */,
 				D47E39B7236050F50072AAF1 /* Base */,
 				D47E39C3236050F50072AAF1 /* Define */,
 				D47E39CA236050F50072AAF1 /* Home */,
@@ -348,9 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				D47E39B6236050F50072AAF1 /* Assets.xcassets */,
-				D47E666324A0D0C0004F16B6 /* app.css */,
-				D47E666424A0D0C0004F16B6 /* jquery.js */,
-				D47E666224A0D0C0004F16B6 /* style.css */,
 				D47E39EB236050F50072AAF1 /* Launch Screen.storyboard */,
 				D47E39F3236050F50072AAF1 /* all.txt */,
 				D47E39F4236050F50072AAF1 /* DengTa.json */,
@@ -505,7 +498,7 @@
 				ORGANIZATIONNAME = Sherwin.Chen;
 				TargetAttributes = {
 					F8E4695F1395739C00DB05C8 = {
-						DevelopmentTeam = H9Z4MVAQY2;
+						DevelopmentTeam = 39BS6H7U26;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -538,10 +531,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D47E666724A0D0C0004F16B6 /* jquery.js in Resources */,
-				D47E666624A0D0C0004F16B6 /* app.css in Resources */,
 				D47E3A20236050F60072AAF1 /* all.txt in Resources */,
-				D47E666524A0D0C0004F16B6 /* style.css in Resources */,
 				D47E3A14236050F60072AAF1 /* SHSettingViewController.xib in Resources */,
 				D47E3A23236050F60072AAF1 /* qz_loading.gif in Resources */,
 				D47E3A08236050F60072AAF1 /* Assets.xcassets in Resources */,
@@ -690,7 +680,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 2020.10.19.1111;
+				CURRENT_PROJECT_VERSION = 2021.01.07.1033;
 				DEVELOPMENT_TEAM = H9Z4MVAQY2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -716,9 +706,9 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.2.4;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
 				PRODUCT_NAME = "聚阅读";
 				PROVISIONING_PROFILE = "";
@@ -788,12 +778,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = INewsX.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2020.10.19.1111;
-				DEVELOPMENT_TEAM = H9Z4MVAQY2;
+				CURRENT_PROJECT_VERSION = 2021.01.07.1033;
+				DEVELOPMENT_TEAM = 39BS6H7U26;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
@@ -819,13 +809,13 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
+				MARKETING_VERSION = 1.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huolala.userinhouse;
 				PRODUCT_NAME = "聚阅读";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = devMMT_INewsX;
+				PROVISIONING_PROFILE_SPECIFIER = "u-inhouse-2022";
 				WARNING_CFLAGS = "-Wunreachable-code";
 				WRAPPER_EXTENSION = app;
 			};
@@ -855,13 +845,13 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = INewsX.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = "INewsX/聚阅读Release.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 2020.10.19.1111;
-				DEVELOPMENT_TEAM = H9Z4MVAQY2;
+				CURRENT_PROJECT_VERSION = 2021.01.07.1033;
+				DEVELOPMENT_TEAM = 39BS6H7U26;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				GCC_SHORT_ENUMS = YES;
@@ -886,13 +876,13 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.2.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mmt.INewsX;
+				MARKETING_VERSION = 1.2.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huolala.userinhouse;
 				PRODUCT_NAME = "聚阅读";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = disMMT_INewsX;
+				PROVISIONING_PROFILE_SPECIFIER = "u-inhouse-2022";
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = "-Wunreachable-code";
 				WRAPPER_EXTENSION = app;

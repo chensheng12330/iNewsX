@@ -88,7 +88,9 @@ static char *kNSURLRequestSSTOPKEY = "kNSURLRequestSSTOPKEY";
         return NO;
     }
 
-
+    if ([request.URL.absoluteString containsString:@"https://tophub.today/l?e="]) {
+        return NO;
+    }
 
     /// 不缓存 ajax 请求
     NSString *hasAjax = [request valueForHTTPHeaderField:@"X-Requested-With"];
@@ -236,7 +238,11 @@ static NSString* _gFilePath;
 
 - (void)startLoading:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
 {
-    if ([self.request.URL.absoluteString containsString:@"google"]) {
+    NSString *reqUrlStr = self.request.URL.absoluteString;
+    
+    if ([reqUrlStr containsString:@"google"] ||
+        [reqUrlStr containsString:@"hm.baidu"]
+        ) {
         completionHandler(nil,nil,[NSError errorWithDomain:@"abc" code:404 userInfo:nil]);
         return;
     }
@@ -248,18 +254,24 @@ static NSString* _gFilePath;
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath] && mimeType) {
         NSLog(@"\n------------------------------\n>>> 读缓存URL: %@,\n >>> mimeType: %@\n", self.request.URL, mimeType);
         
-        NSData *fileData = [[NSData alloc] initWithContentsOfFile:filePath];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSData *fileData = [[NSData alloc] initWithContentsOfFile:filePath];
+            
+            NSMutableDictionary *dict = [self.request.allHTTPHeaderFields mutableCopy];
+            [dict addEntriesFromDictionary:@{@"Content-type":mimeType,
+                                             @"Content-length":[NSString stringWithFormat:@"%ld",fileData.length]}];
+            NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:dict];
+            
+            completionHandler(fileData,response,nil);
+            
+            self.data = fileData;
+            self.response = response;
+            self.error = nil;
+            [self finishLoading];
+            
+        });
         
-        NSMutableDictionary *dict = [self.request.allHTTPHeaderFields mutableCopy];
-        [dict addEntriesFromDictionary:@{@"Content-type":mimeType,
-                                         @"Content-length":[NSString stringWithFormat:@"%ld",fileData.length]}];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:self.request.URL statusCode:200 HTTPVersion:@"HTTP/1.1" headerFields:dict];
-        completionHandler(fileData,response,nil);
-        
-        self.data = fileData;
-        self.response = response;
-        self.error = nil;
-        [self finishLoading];
         return;
     }
     
@@ -367,7 +379,7 @@ static SSWKURLHandler *sharedInstance = nil;
 - (dispatch_queue_t)queue
 {
     if (!_queue) {
-//        _queue = dispatch_queue_create("SSWKURLHandler.queue", DISPATCH_QUEUE_SERIAL);
+        //_queue = dispatch_queue_create("SSWKURLHandler.queue", DISPATCH_QUEUE_CONCURRENT);
         _queue = dispatch_get_main_queue();
     }
     return _queue;
@@ -486,6 +498,7 @@ API_AVAILABLE(ios(11.0)){
 
 - (void)ssRegisterURLProtocol:(Class)protocolClass
 {
+    //return;
     SSWKURLHandler *handler = [SSWKURLHandler sharedInstance];
     handler.protocolClass = protocolClass;
     if (@available(iOS 11.0, *)) {
